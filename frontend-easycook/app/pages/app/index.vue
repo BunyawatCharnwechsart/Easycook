@@ -1,9 +1,11 @@
 <script setup>
-navigateTo('/auth/register')
+definePageMeta({
+    middleware: 'auth'
+})
 </script>
 
 <template>
     <div>
-        <h1>Hello nuxt</h1>
+        <h1>main</h1>
     </div>
 </template>
