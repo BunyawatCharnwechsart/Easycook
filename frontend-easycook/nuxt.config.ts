@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
@@ -15,7 +14,7 @@ export default defineNuxtConfig({
     vite: {
         plugins:
             [tailwindcss()]
-    },
+        },
     modules: [
         '@nuxt/content',
         '@nuxt/eslint',
