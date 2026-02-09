@@ -17,6 +17,6 @@ const users = await $fetch(`${config.public.apiBase}/users`)
             <p>Email: {{ u.email }}</p>
         </li>
         </ul>
-        <nuxt-link to="/register">register</nuxt-link>
+        <nuxt-link to="/auth/register">register</nuxt-link>
     </div>
 </template>
