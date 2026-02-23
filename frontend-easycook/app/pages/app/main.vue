@@ -35,13 +35,13 @@
             <ADS/>
 
             <!--หมวดหมู่แนะนำ-->
-            <div class="flex flex-col w-full">
+            <div class="flex flex-col w-full mt-10">
                 <h1 class="ml-10 text-4xl">หมวดหมู่แนะนำ</h1>
                 <!--Card-->
                 <section class="m-10">
                     <RecommendedSection/>
                 </section>
-                
+                <h1 class="ml-10 mt-10 text-4xl">เมนูอาหารที่แนะนำ</h1>
             </div>
         </section>
 
