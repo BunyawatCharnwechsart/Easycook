@@ -6,7 +6,7 @@
             :key="index"
             class="flex flex-col items-center"
         >
-            <img :src="img.png" class="w-full aspect-square rounded-full object-cover">
+            <img :src="img.png" class="w-[80%] aspect-square rounded-full object-cover">
             <p class="mt-2 text-xl">{{ img.title }}</p>
         </div>
     </div>
