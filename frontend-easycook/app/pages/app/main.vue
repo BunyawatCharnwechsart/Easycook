@@ -41,8 +41,10 @@
                 <section class="m-10">
                     <RecommendedSection/>
                 </section>
+                
             </div>
         </section>
+
         <aboutFooter/>
     </div>
 </template>
