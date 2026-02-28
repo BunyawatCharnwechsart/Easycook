@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans text-gray-800">
+  <div style="font-family: 'Bai Jamjuree'" class="font-sans text-gray-800">
     <navBar/>
     <!-- Hero Slider -->
     <section class="relative h-screen overflow-hidden">
@@ -58,13 +58,14 @@
 
       </div>
     </section>
-
+    <aboutFooter/>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import navBar from "~/components/navBar.vue";
+import aboutFooter from "~/components/aboutFooter.vue";
 
 const images = [
   "/about.1.png",
