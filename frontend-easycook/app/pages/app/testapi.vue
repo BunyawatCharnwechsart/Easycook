@@ -1,7 +1,9 @@
 <script setup>
 const config = useRuntimeConfig()
 
-const menus = await $fetch(`${config.public.apiBase}/menu`)
+const { data: menus } = await useAsyncData('menus', () =>
+    $fetch(`${config.public.apiBase}/menu`)
+)
 </script>
 
 <template>
@@ -13,11 +15,20 @@ const menus = await $fetch(`${config.public.apiBase}/menu`)
             :key="m.menuid"
             class="bg-white mb-4 p-4 rounded"
         >
+            <!-- รูปปก -->
+            <img
+                v-if="m.cover_image"
+                :src="m.cover_image"
+                class="w-48 h-48 object-cover rounded mb-3"
+            >
+            <div v-else class="w-full h-48 bg-gray-200 rounded mb-3 flex items-center justify-center">
+                <span class="text-gray-400">ไม่มีรูปภาพ</span>
+            </div>
+
             <!-- ข้อมูลหลัก -->
             <h2 class="text-lg font-bold">{{ m.mname }}</h2>
             <p class="text-gray-500 text-sm">หมวดหมู่: {{ m.categoryname }} · เวลา: {{ m.cooktime }} นาที</p>
             <p class="text-gray-400 text-sm">โดย: {{ m.author_name }}</p>
-            <p class="text-gray-400 text-sm">menuid: {{ m.menuid }}</p>
             <p v-if="m.description" class="mt-2 text-gray-700">{{ m.description }}</p>
 
             <!-- วัตถุดิบ -->
