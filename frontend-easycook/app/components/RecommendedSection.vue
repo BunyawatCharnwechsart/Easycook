@@ -1,22 +1,23 @@
+<script setup>
+const config = useRuntimeConfig()
+const { data: categoryItems } = await useAsyncData('categories', () => 
+    $fetch(`${config.public.apiBase}/category`)
+)
+
+</script>
+
 <template>
     <div class="flex gap-20 justify-center">
-        <!--Use V-for(is vue loop syntax)-->
         <div
-            v-for="(img, index) in images"
-            :key="index"
+            v-for="category in categoryItems"
+            :key="category.categoryid"
             class="flex flex-col items-center"
         >
-            <img :src="img.png" class="w-[80%] aspect-square rounded-full object-cover">
-            <p class="mt-2 text-xl">{{ img.title }}</p>
+            <img 
+                src="/Recommendedimg.png"
+                class="w-[80%] aspect-square rounded-full object-cover"
+            >
+            <p class="mt-2 text-xl">{{ category.categoryname }}</p>
         </div>
     </div>
 </template>
-
-<script setup>
-const images = [
-    { png: '/Recommendedimg.png', title: 'wwwwww' },
-    { png: '/Recommendedimg.png', title: 'wwwwww' },
-    { png: '/Recommendedimg.png', title: 'wwwwww' },
-    { png: '/Recommendedimg.png', title: 'wwwwww' },
-]
-</script>
