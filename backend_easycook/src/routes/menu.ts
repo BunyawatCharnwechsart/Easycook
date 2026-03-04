@@ -20,7 +20,8 @@ menu.get('/', async (c) => {
             JOIN users u    ON m.uid = u.uid
             WHERE m.status = 'published'
             ORDER BY m.created_at DESC
-        `).all()
+        `)
+        .all()
 
         if (!menuList.results || menuList.results.length === 0) {
             return c.json([])
@@ -35,13 +36,17 @@ menu.get('/', async (c) => {
                 SELECT * FROM ingredient
                 WHERE menuid IN (${placeholders})
                 ORDER BY menuid, ingredient_order
-            `).bind(...menuIds).all(),
+            `)
+            .bind(...menuIds)
+            .all(),
 
             db.prepare(`
                 SELECT * FROM makestep
                 WHERE menuid IN (${placeholders})
                 ORDER BY menuid, step_order
-            `).bind(...menuIds).all(),
+            `)
+            .bind(...menuIds)
+            .all(),
         ])
 
         // Group ingredients และ steps ตาม menuid
@@ -122,79 +127,6 @@ menu.get('/:menuid', async (c) => {
             ingredients: ingredients.results,
             steps: steps.results,
         })
-
-    } catch (err: any) {
-        return c.json({ error: err?.message || String(err) }, 500)
-    }
-})
-
-menu.post('/', async (c) => {
-    try {
-        const body = await c.req.json()
-
-        const { uid, categoryid, mname, cooktime,
-                description, cover_image,
-                status = 'published',
-                ingredients = [], steps = [] } = body
-
-        // Validate fields หลัก
-        if (!uid || !categoryid || !mname || !cooktime) {
-            return c.json({ error: 'uid, categoryid, mname, cooktime are required' }, 400)
-        }
-        if (!Array.isArray(ingredients) || ingredients.length === 0) {
-            return c.json({ error: 'ingredients must be a non-empty array' }, 400)
-        }
-        if (!Array.isArray(steps) || steps.length === 0) {
-            return c.json({ error: 'steps must be a non-empty array' }, 400)
-        }
-
-        const db = getDb(c)
-
-        // 1. INSERT menu
-        const menuResult = await db.prepare(`
-            INSERT INTO menu (uid, categoryid, mname, cooktime, description, cover_image, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        `).bind(
-            uid, categoryid, mname, cooktime,
-            description ?? null,
-            cover_image ?? null,
-            status
-        ).run()
-
-        const menuid = menuResult.meta.last_row_id
-
-        // 2. INSERT ingredients (batch)
-        const ingredientStmt = db.prepare(`
-            INSERT INTO ingredient (menuid, ingredient_order, ingredient_name)
-            VALUES (?, ?, ?)
-        `)
-        await db.batch(
-            ingredients.map((ing, index) =>
-                ingredientStmt.bind(
-                    menuid,
-                    index + 1,
-                    ing.ingredient_name,
-                )
-            )
-        )
-
-        // 3. INSERT steps (batch)
-        const stepStmt = db.prepare(`
-            INSERT INTO makestep (menuid, step_order, step, step_image)
-            VALUES (?, ?, ?, ?)
-        `)
-        await db.batch(
-            steps.map((s, index) =>
-                stepStmt.bind(
-                    menuid,
-                    index + 1,
-                    s.step,
-                    s.step_image ?? null
-                )
-            )
-        )
-
-        return c.json({ message: 'Created', menuid }, 201)
 
     } catch (err: any) {
         return c.json({ error: err?.message || String(err) }, 500)
