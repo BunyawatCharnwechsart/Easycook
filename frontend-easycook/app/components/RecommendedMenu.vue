@@ -8,11 +8,11 @@ const { data: menus } = await useAsyncData('menus', () =>
 
 <template>
     <div class="m-10">
-        <div class="flex gap-30">
+        <div class="flex gap-20">
             <div
                 v-for="m in menus"
                 :key="m.menuid"
-                class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden cursor-pointer w-80"
+                class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden cursor-pointer w-90"
             >
                 <!-- รูปภาพ -->
                 <div class="relative">
