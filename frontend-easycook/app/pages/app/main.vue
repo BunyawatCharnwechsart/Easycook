@@ -42,6 +42,9 @@
                     <RecommendedSection/>
                 </section>
                 <h1 class="ml-10 mt-10 text-4xl">เมนูอาหารที่แนะนำ</h1>
+                <section class="m-10">
+                    <RecommendedMenu/>
+                </section>
             </div>
         </section>
 
@@ -54,5 +57,6 @@ import navBar from '~/components/navBar.vue';
 import aboutFooter from '~/components/aboutFooter.vue';
 import ADS from '~/components/ADS.vue';
 import RecommendedSection from '~/components/RecommendedSection.vue';
+import RecommendedMenu from '~/components/RecommendedMenu.vue';
 
 </script>
