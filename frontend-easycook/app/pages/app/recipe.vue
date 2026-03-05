@@ -321,24 +321,41 @@ v-if="showDeleteModal"
 class="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
 >
 
-<div class="bg-white w-[600px] rounded-2xl p-10 shadow-xl">
+<div class="bg-white w-[650px] rounded-3xl p-10 shadow-xl text-center">
 
-<p class="text-xl font-semibold text-center mb-10">
-คุณแน่ใจหรือไม่ว่าต้องการลบโพสต์ของคุณ?
+<!-- ICON -->
+<div class="flex justify-center mb-4">
+
+<div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center">
+
+<TrashIcon class="w-10 h-10 text-red-500"/>
+
+</div>
+
+</div>
+
+<!-- TITLE -->
+<h2 class="text-xl font-semibold mb-2">
+ลบโพสต์นี้ใช่ไหม?
+</h2>
+
+<p class="text-gray-500 mb-10">
+คุณแน่ใจหรือไม่ว่าต้องการลบโพสต์ของคุณ
 </p>
 
-<div class="flex justify-between">
+<!-- BUTTONS -->
+<div class="flex justify-between gap-6">
 
 <button
 @click="showDeleteModal = false"
-class="border px-10 py-4 rounded-xl text-lg"
+class="flex-1 border border-gray-300 py-4 rounded-xl text-lg font-medium"
 >
 ยกเลิก
 </button>
 
 <button
 @click="confirmDelete"
-class="bg-red-500 text-white px-10 py-4 rounded-xl text-lg"
+class="flex-1 bg-red-500 text-white py-4 rounded-xl text-lg font-medium"
 >
 ลบ
 </button>
