@@ -3,6 +3,96 @@ import { getDb } from "../db";
 
 const menu = new Hono()
 
+menu.post('/', async (c) =>{
+    try {
+        const body = await c.req.parseBody()
+        // parse fields จาก FormData
+        const uid          = Number(body['uid'])
+        const mname        = body['mname'] as string
+        const cooktime     = Number(body['cooktime'])
+        const description  = body['description'] as string | undefined
+        const categoryname = body['categoryname'] as string
+        const ingredients  = JSON.parse((body['ingredients'] as string) || '[]') as string[]
+        const steps        = JSON.parse((body['steps'] as string) || '[]') as { step: string; step_image?: string }[]
+
+         // validate
+        if (!uid || !mname || !cooktime || !categoryname) {
+            return c.json({ error: 'กรุณากรอกข้อมูลให้ครบ' }, 400)
+        }
+
+        // อัปโหลดรูปถ้ามี
+        let coverImageUrl: string | null = null
+        const file = body['cover_image'] as File
+
+        if (file instanceof File && file.size > 0) {
+            const allowed = ['image/jpeg', 'image/png', 'image/webp']
+            if (!allowed.includes(file.type)) {
+                return c.json({ error: 'รองรับเฉพาะ jpg, png, webp' }, 400)
+            }
+            if (file.size > 5 * 1024 * 1024) {
+                return c.json({ error: 'ไฟล์ใหญ่เกิน 5MB' }, 400)
+            }
+
+            const r2 = (c.env as any).easycookimage
+            const ext = file.name.split('.').pop()
+            const key = `menu/${Date.now()}-${crypto.randomUUID()}.${ext}`
+
+            await r2.put(key, file.stream(), {
+                httpMetadata: { contentType: file.type },
+            })
+
+            coverImageUrl = `https://pub-ce33e4744cab47488a6d6c1d27d3883f.r2.dev/${key}` // เปลี่ยนเป็น public domain จริง
+        }
+
+        const db = getDb(c)
+
+        // หา categoryid
+        const category = await db.prepare(
+            'SELECT categoryid FROM category WHERE categoryname = ?'
+        ).bind(categoryname).first()
+
+        if (!category) {
+            return c.json({ error: 'ไม่พบหมวดหมู่ที่ระบุ' }, 400)
+        }
+
+        // insert menu
+        const menuResult = await db.prepare(`
+            INSERT INTO menu (uid, categoryid, mname, cooktime, description, cover_image, status)
+            VALUES (?, ?, ?, ?, ?, ?, 'published')
+        `).bind(uid, (category as any).categoryid, mname, cooktime, description ?? null, coverImageUrl).run()
+
+        const menuid = menuResult.meta.last_row_id
+
+        // insert ingredients
+        if (ingredients.length > 0) {
+            await db.batch(
+                ingredients.map((name: string, index: number) =>
+                    db.prepare(`
+                        INSERT INTO ingredient (menuid, ingredient_order, ingredient_name)
+                        VALUES (?, ?, ?)
+                    `).bind(menuid, index + 1, name)
+                )
+            )
+        }
+
+        // insert steps
+        if (steps.length > 0) {
+            await db.batch(
+                steps.map((s: { step: string; step_image?: string }, index: number) =>
+                    db.prepare(`
+                        INSERT INTO makestep (menuid, step_order, step, step_image)
+                        VALUES (?, ?, ?, ?)
+                    `).bind(menuid, index + 1, s.step, s.step_image ?? null)
+                )
+            )
+        }
+
+        return c.json({ message: 'Created', menuid }, 201)
+    } catch(err:any){
+        return c.json({ error: err?.message || String(err) }, 500)
+    }
+})
+
 // All menu
 menu.get('/', async (c) => {
     try {

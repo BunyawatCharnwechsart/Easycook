@@ -9,7 +9,7 @@
 			"database_name": "easycookDB",
 			"database_id": "01f9987f-c71c-4026-9f3a-9278f9d8b7c9"
 		}
-	]
+	],
 	// "compatibility_flags": [
 	//   "nodejs_compat"
 	// ],
@@ -22,12 +22,12 @@
 	//     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 	//   }
 	// ],
-	// "r2_buckets": [
-	//   {
-	//     "binding": "MY_BUCKET",
-	//     "bucket_name": "my-bucket"
-	//   }
-	// ],
+	"r2_buckets": [
+		{
+			"binding": "easycookimage",
+			"bucket_name": "easycookimage"
+		}
+	],
 	// "d1_databases": [
 	//   {
 	//     "binding": "MY_DB",
