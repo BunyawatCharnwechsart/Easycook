@@ -37,13 +37,15 @@
 
         <!-- Info -->
         <div class="flex flex-col gap-2">
-          <h1 class="text-3xl font-bold text-gray-900">ประยุทธ์ จันทร์อังคาร</h1>
-          <p class="text-gray-500 text-base">@ppppad</p>
+          <h1 class="text-3xl font-bold text-gray-900">สมหมาย ทองจิตวิเศษ</h1>
+          <p class="text-gray-500 text-base">สมหมาย@gmail.com</p>
+          <nuxt-link to="/app/editprofile">
           <button
             class="mt-2 px-16 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md transition-colors duration-200 text-sm"
           >
             แก้ไขโปรไฟล์
           </button>
+          </nuxt-link>
         </div>
       </div>
     </section>
@@ -72,15 +74,10 @@
         v-if="activeTab === 'recipes' && recipes.length === 0"
         class="flex flex-col items-center justify-center py-20 gap-4"
       >
-        <img src="/icons/recipe-book.svg" alt="" class="w-28 h-28 opacity-30"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
-        />
-        <!-- Fallback icon -->
-        <div class="hidden flex-col items-center text-gray-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-28 h-28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.8">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-          </svg>
-        </div>
+        <!-- Inline SVG recipe book icon — no external file needed -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-28 h-28 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+        </svg>
         <h2 class="text-xl font-bold text-gray-500">เจอสูตรถูกใจแล้วใช่ไหม?</h2>
         <p class="text-gray-400 text-sm">เก็บสูตรอร่อยไว้ที่นี่ได้เลย</p>
       </div>
