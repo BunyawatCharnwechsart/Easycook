@@ -165,6 +165,7 @@ import { ref } from "vue";
 import navBar from "~/components/navBar.vue";
 import aboutFooter from "~/components/aboutFooter.vue";
 
+
 // Profile image upload
 const fileInput = ref(null);
 const profileImage = ref(null);
