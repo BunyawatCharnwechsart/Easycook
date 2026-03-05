@@ -2,6 +2,18 @@
   <div style="font-family: 'Bai Jamjuree', sans-serif" class="min-h-screen flex flex-col bg-white">
     <navBar />
 
+    <!-- Top Error Banner -->
+    <div
+      v-if="showBanner"
+      class="w-full bg-red-500 text-white flex items-center gap-3 px-6 py-3 text-sm font-medium"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01"/>
+      </svg>
+      ไม่สามารถบันทึกข้อมูลได้ กรุณาตรวจสอบข้อมูลอีกครั้ง
+    </div>
+
     <!-- Header -->
     <section class="max-w-5xl mx-auto w-full px-6 pt-16 pb-10 flex flex-col items-center gap-3">
       <!-- Avatar with camera button -->
@@ -43,23 +55,55 @@
 
     <!-- Form -->
     <section class="max-w-5xl mx-auto w-full px-6 pb-16 flex flex-col gap-5">
+
       <!-- ชื่อ + นามสกุล -->
       <div class="grid grid-cols-2 gap-5">
+        <!-- ชื่อ -->
         <div class="flex flex-col gap-1.5">
           <label class="text-sm font-medium text-gray-700">ชื่อ</label>
-          <input
-            v-model="form.firstName"
-            type="text"
-            class="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-          />
+          <div
+            class="flex items-center w-full border rounded-md px-4 py-2.5 gap-2 transition"
+            :class="errors.firstName
+              ? 'border-red-400 bg-red-50'
+              : 'border-gray-300 focus-within:ring-2 focus-within:ring-green-500'"
+          >
+            <svg v-if="errors.firstName" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01"/>
+            </svg>
+            <input
+              v-model="form.firstName"
+              type="text"
+              :placeholder="errors.firstName || ''"
+              class="flex-1 bg-transparent outline-none text-sm"
+              :class="errors.firstName ? 'placeholder-red-400 text-red-500' : 'text-gray-800'"
+              @input="clearError('firstName')"
+            />
+          </div>
         </div>
+
+        <!-- นามสกุล -->
         <div class="flex flex-col gap-1.5">
           <label class="text-sm font-medium text-gray-700">นามสกุล</label>
-          <input
-            v-model="form.lastName"
-            type="text"
-            class="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-          />
+          <div
+            class="flex items-center w-full border rounded-md px-4 py-2.5 gap-2 transition"
+            :class="errors.lastName
+              ? 'border-red-400 bg-red-50'
+              : 'border-gray-300 focus-within:ring-2 focus-within:ring-green-500'"
+          >
+            <svg v-if="errors.lastName" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01"/>
+            </svg>
+            <input
+              v-model="form.lastName"
+              type="text"
+              :placeholder="errors.lastName || ''"
+              class="flex-1 bg-transparent outline-none text-sm"
+              :class="errors.lastName ? 'placeholder-red-400 text-red-500' : 'text-gray-800'"
+              @input="clearError('lastName')"
+            />
+          </div>
         </div>
       </div>
 
@@ -69,7 +113,7 @@
         <input
           v-model="form.username"
           type="text"
-          class="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          class="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
       </div>
 
@@ -79,7 +123,7 @@
         <input
           v-model="form.email"
           type="email"
-          class="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          class="w-full border border-gray-300 rounded-md px-4 py-2.5 text-sm text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
       </div>
 
@@ -130,7 +174,7 @@ function onFileChange(e) {
   reader.readAsDataURL(file);
 }
 
-// Form data — replace with real user data from API/store
+// Form data
 const form = ref({
   firstName: "",
   lastName: "",
@@ -138,13 +182,58 @@ const form = ref({
   email: "ppapapa@gmail.com",
 });
 
+// Validation errors
+const errors = ref({
+  firstName: "",
+  lastName: "",
+});
+
+const showBanner = ref(false);
+
+function clearError(field) {
+  errors.value[field] = "";
+  // Hide banner if all errors cleared
+  if (!errors.value.firstName && !errors.value.lastName) {
+    showBanner.value = false;
+  }
+}
+
+function validate() {
+  errors.value.firstName = "";
+  errors.value.lastName = "";
+
+  let valid = true;
+  if (!form.value.firstName.trim()) {
+    errors.value.firstName = "กรุณากรอกชื่อ";
+    valid = false;
+  }
+  if (!form.value.lastName.trim()) {
+    errors.value.lastName = "กรุณากรอกนามสกุล";
+    valid = false;
+  }
+  return valid;
+}
+
 function onCancel() {
   router.back();
 }
 
-function onSave() {
-  // TODO: call API to update profile
-  console.log("Saving profile:", form.value);
-  router.back();
+async function onSave() {
+  showBanner.value = false;
+
+  if (!validate()) {
+    showBanner.value = true;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+
+  try {
+    // TODO: call API to update profile
+    console.log("Saving profile:", form.value);
+    router.back();
+  } catch {
+    showBanner.value = true;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 }
-</script>   
+</script>
