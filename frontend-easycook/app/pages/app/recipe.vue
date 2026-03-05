@@ -2,34 +2,74 @@
 import { ref } from "vue"
 import { TrashIcon, PhotoIcon } from "@heroicons/vue/24/outline"
 
+/* FORM */
 const title = ref("")
-const category = ref("")
 const time = ref("")
 const description = ref("")
 const ingredients = ref("")
-
 const recipeImage = ref(null)
 
-const steps = ref([
-  { text: "", image: null },
-  { text: "", image: null }
-])
-
+/* ERROR */
 const errors = ref({})
 const showError = ref(false)
 
-/* 🔴 เพิ่มตัวนี้ */
+/* CATEGORY */
+const showCategoryModal = ref(false)
+const selectedMain = ref("")
+const selectedCook = ref("")
+
+const mainCategories = [
+  "อาหารจานเดียว",
+  "อาหารตามสั่ง",
+  "อาหารไทย",
+  "อาหารจีน",
+  "อาหารญี่ปุ่น",
+  "อาหารเกาหลี",
+  "อาหารอีสาน"
+]
+
+const cookTypes = [
+  "ผัด", "ทอด", "ต้ม", "แกง", "ยำ", "อบ", "นึ่ง", "ปิ้ง / ย่าง"
+]
+
+/* DELETE MODAL */
 const showDeleteModal = ref(false)
 
+/* STEPS */
+const steps = ref([
+  { text: "" },
+  { text: "" }
+])
+
+const addStep = () => {
+  steps.value.push({ text: "" })
+}
+
+const removeStep = (index) => {
+  steps.value.splice(index, 1)
+}
+
+
+
+/* VALIDATE */
 const validate = () => {
+
   errors.value = {}
 
-  if (!recipeImage.value) errors.value.image = "กรุณาอัปโหลดรูปเมนูอาหาร"
-  if (!title.value) errors.value.title = "กรุณากรอกชื่อเมนูอาหาร"
-  if (!category.value) errors.value.category = "กรุณาระบุหมวดหมู่อาหาร"
-  if (!time.value) errors.value.time = "กรุณาระบุเวลาในการปรุงอาหาร"
-  if (!description.value) errors.value.description = "กรุณากรอกคำอธิบายเมนูอาหาร"
-  if (!ingredients.value) errors.value.ingredients = "กรุณากรอกส่วนผสม"
+  if (!recipeImage.value)
+    errors.value.image = "กรุณาอัปโหลดรูปเมนูอาหาร"
+
+  if (!title.value)
+    errors.value.title = "กรุณากรอกชื่อเมนูอาหาร"
+
+  if (!description.value)
+    errors.value.description = "กรุณากรอกคำอธิบายสูตรอาหาร"
+
+  if (!selectedMain.value || !selectedCook.value)
+    errors.value.category = "กรุณาเลือกหมวดหมู่"
+
+  if (!ingredients.value)
+    errors.value.ingredients = "กรุณากรอกส่วนผสม"
 
   steps.value.forEach((step, index) => {
     if (!step.text) {
@@ -41,329 +81,282 @@ const validate = () => {
   return !showError.value
 }
 
-const addStep = () => {
-  steps.value.push({ text: "", image: null })
-}
-
-const removeStep = (index) => {
-  steps.value.splice(index, 1)
-}
-
-const handleRecipeImage = (e) => {
-  const file = e.target.files[0]
-  if (file) {
-    recipeImage.value = URL.createObjectURL(file)
-  }
-}
-
-const handleStepImage = (e, index) => {
-  const file = e.target.files[0]
-  if (file) {
-    steps.value[index].image = URL.createObjectURL(file)
-  }
-}
-
+/* SUBMIT */
 const submitForm = () => {
   if (!validate()) return
   console.log("submit success")
 }
 
-/* 🔴 ฟังก์ชันลบ */
+/* CATEGORY SAVE */
+const confirmCategory = () => {
+  showCategoryModal.value = false
+}
+
+/* DELETE */
 const confirmDelete = () => {
-  console.log("delete post")
   showDeleteModal.value = false
 }
 </script>
 
 <template>
-<div class="min-h-screen bg-gray-100 p-10">
-
-<div class="max-w-6xl mx-auto bg-white p-8 rounded-2xl">
 
-<!-- Header -->
-<div class="flex justify-between mb-6">
-
-<div class="flex items-center gap-3">
-<img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" />
-
-<div>
-<p class="font-semibold">ประยุท จันอังคาร</p>
-<p class="text-sm text-gray-400">ผู้เขียน</p>
-</div>
-</div>
-
-<div class="flex gap-3">
-
-<!-- 🔴 ปุ่มลบ -->
-<button
-@click="showDeleteModal = true"
-class="border border-red-400 text-red-500 px-5 py-2 rounded-lg"
->
-ลบ
-</button>
-
-<button
-@click="submitForm"
-class="bg-green-600 text-white px-5 py-2 rounded-lg"
->
-โพสต์
-</button>
-
-</div>
-</div>
-
-<!-- ERROR BAR -->
-<div
-v-if="showError"
-class="bg-red-500 text-white p-3 rounded mb-6"
->
-ไม่สามารถบันทึกข้อมูลได้ กรุณาตรวจสอบข้อมูลอีกครั้ง
-</div>
-
-<!-- TOP -->
-<div class="grid grid-cols-3 gap-6">
-
-<!-- Upload recipe image -->
-<div>
-
-<label
-class="bg-gray-200 h-80 rounded-xl flex flex-col items-center justify-center cursor-pointer relative overflow-hidden"
-:class="{'border-2 border-red-500': errors.image}"
->
-
-<input
-type="file"
-accept="image/*"
-class="hidden"
-@change="handleRecipeImage"
-/>
-
-<img
-v-if="recipeImage"
-:src="recipeImage"
-class="absolute inset-0 w-full h-full object-cover"
-/>
-
-<div v-if="!recipeImage" class="flex flex-col items-center text-gray-400">
-
-<PhotoIcon class="w-10 h-10"/>
-
-<p class="text-sm mt-2">
-อัปโหลดรูปเมนูที่คุณทำ
-</p>
-
-</div>
-
-</label>
-
-<p v-if="errors.image" class="text-red-500 text-sm mt-1">
-⚠ {{ errors.image }}
-</p>
-
-</div>
-
-<!-- RIGHT -->
-<div class="col-span-2 space-y-4">
-
-<input
-v-model="title"
-placeholder="เพิ่มชื่อเมนูของคุณ"
-class="w-full bg-gray-100 rounded-lg p-3"
-:class="{'border border-red-500': errors.title}"
-/>
-
-<p v-if="errors.title" class="text-red-500 text-sm">
-⚠ {{ errors.title }}
-</p>
-
-<div class="grid grid-cols-2 gap-4">
-
-<div>
-<input
-v-model="category"
-placeholder="หมวดหมู่"
-class="bg-gray-100 rounded-lg p-3 w-full"
-:class="{'border border-red-500': errors.category}"
-/>
-
-<p v-if="errors.category" class="text-red-500 text-sm">
-⚠ {{ errors.category }}
-</p>
-</div>
-
-<div>
-<input
-v-model="time"
-placeholder="เวลา เช่น 30 นาที"
-class="bg-gray-100 rounded-lg p-3 w-full"
-:class="{'border border-red-500': errors.time}"
-/>
-
-<p v-if="errors.time" class="text-red-500 text-sm">
-⚠ {{ errors.time }}
-</p>
-</div>
-
-</div>
-
-<textarea
-v-model="description"
-placeholder="คำอธิบายสูตรอาหารของคุณต้องไม่เกิน 500 ตัวอักษร"
-class="w-full bg-gray-100 rounded-xl p-4 h-40 resize-none"
-:class="{'border border-red-500': errors.description}"
-/>
-
-<p v-if="errors.description" class="text-red-500 text-sm">
-⚠ {{ errors.description }}
-</p>
-
-</div>
-</div>
-
-<!-- Ingredients -->
-<div class="mt-8">
-
-<h2 class="mb-2 font-semibold">
-ส่วนผสม
-</h2>
-
-<textarea
-v-model="ingredients"
-class="w-full bg-gray-100 rounded-lg p-3 h-20"
-placeholder="• น้ำปลา 2 ช้อนโต๊ะ"
-:class="{'border border-red-500': errors.ingredients}"
-/>
+  <div class="min-h-screen bg-gray-100 p-10">
 
-<p v-if="errors.ingredients" class="text-red-500 text-sm">
-⚠ {{ errors.ingredients }}
-</p>
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-2xl">
 
-</div>
+      <!-- ERROR BANNER -->
+      <div v-if="showError" class="bg-red-500 text-white px-4 py-3 rounded mb-6 flex items-center gap-2">
+        ⚠ ไม่สามารถบันทึกข้อมูลได้ กรุณาตรวจสอบข้อมูลอีกครั้ง
+      </div>
 
-<!-- Steps -->
-<div class="mt-8">
+      <!-- HEADER -->
+      <div class="flex justify-between mb-6">
 
-<h2 class="font-semibold mb-4">
-วิธีทำ / ขั้นตอนการทำ
-</h2>
+        <div class="flex items-center gap-3">
+          <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" />
+          <div>
+            <p class="font-semibold">ประยุท จันอังคาร</p>
+            <p class="text-sm text-gray-400">ผู้เขียน</p>
+          </div>
+        </div>
 
-<div
-v-for="(step,index) in steps"
-:key="index"
-class="flex gap-4 items-start mb-4"
->
+        <div class="flex gap-3">
 
-<label
-class="w-40 h-28 bg-gray-200 rounded-xl flex flex-col items-center justify-center cursor-pointer relative overflow-hidden"
->
+          <button @click="showDeleteModal = true" class="border border-red-400 text-red-500 px-5 py-2 rounded-lg">
+            ลบ
+          </button>
 
-<input
-type="file"
-accept="image/*"
-class="hidden"
-@change="handleStepImage($event,index)"
-/>
+          <button @click="submitForm" class="bg-green-600 text-white px-5 py-2 rounded-lg">
+            โพสต์
+          </button>
 
-<img
-v-if="step.image"
-:src="step.image"
-class="absolute inset-0 w-full h-full object-cover"
-/>
+        </div>
+      </div>
 
-<div v-if="!step.image" class="flex flex-col items-center text-gray-400">
+      <!-- TOP -->
+      <div class="grid grid-cols-3 gap-6">
 
-<PhotoIcon class="w-8 h-8"/>
+        <!-- IMAGE -->
+        <div>
 
-<p class="text-xs text-center">
-เพิ่มรูปขั้นตอน
-</p>
+          <p v-if="errors.image" class="text-red-500 text-sm mb-2">
+            ⚠ {{ errors.image }}
+          </p>
 
-</div>
+          <label
+            class="bg-gray-200 h-80 rounded-xl flex flex-col items-center justify-center cursor-pointer relative overflow-hidden">
 
-</label>
+            <input type="file" accept="image/*" class="hidden" @change="handleRecipeImage" />
 
-<textarea
-v-model="step.text"
-:placeholder="`ขั้นตอนที่ ${index+1}`"
-class="flex-1 bg-gray-100 rounded-lg p-3 h-28"
-:class="{'border border-red-500': errors[`step${index}`]}"
-/>
+            <img v-if="recipeImage" :src="recipeImage" class="absolute inset-0 w-full h-full object-cover" />
 
-<button
-@click="removeStep(index)"
-class="text-red-500"
->
-<TrashIcon class="w-6 h-6"/>
-</button>
+            <div v-if="!recipeImage" class="flex flex-col items-center text-gray-400">
+              <PhotoIcon class="w-10 h-10" />
+              <p class="text-sm mt-2">อัปโหลดรูปเมนูที่คุณทำ</p>
+            </div>
 
-</div>
+          </label>
 
-<div class="flex justify-center mt-6">
+        </div>
 
-<button
-@click="addStep"
-class="bg-green-600 text-white px-10 py-3 rounded-lg"
->
-+ วิธีทำ / ขั้นตอนการทำ
-</button>
+        <!-- RIGHT -->
+        <div class="col-span-2 space-y-4">
 
-</div>
+          <!-- TITLE -->
+          <div>
+            <p v-if="errors.title" class="text-red-500 text-sm mb-1">
+              ⚠ {{ errors.title }}
+            </p>
 
-</div>
+            <input v-model="title" placeholder="เพิ่มชื่อเมนูของคุณ" :class="[
+              'w-full bg-gray-100 rounded-lg p-3 border',
+              errors.title ? 'border-red-500' : 'border-transparent'
+            ]" />
+          </div>
 
-</div>
+          <!-- CATEGORY + TIME -->
+          <div class="flex items-center gap-3">
 
-</div>
+            <p class="text-sm">หมวดหมู่</p>
 
-<!-- 🔴 DELETE MODAL -->
-<div
-v-if="showDeleteModal"
-class="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
->
+            <button @click="showCategoryModal = true" class="bg-green-600 text-white px-4 py-2 rounded-lg">
+              หมวดหมู่
+            </button>
 
-<div class="bg-white w-[650px] rounded-3xl p-10 shadow-xl text-center">
+            <div v-if="selectedMain" class="bg-sky-300 px-4 py-2 rounded-lg">
+              {{ selectedMain }}
+            </div>
 
-<!-- ICON -->
-<div class="flex justify-center mb-4">
+            <div v-if="selectedCook" class="bg-lime-300 px-4 py-2 rounded-lg">
+              {{ selectedCook }}
+            </div>
 
-<div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center">
+            <p class="text-sm ml-10">เวลาที่ใช้</p>
 
-<TrashIcon class="w-10 h-10 text-red-500"/>
+            <input v-model="time" placeholder="เวลา เช่น 30 นาที" :class="[
+              'bg-gray-100 rounded-lg p-3 w-60 border',
+              errors.time ? 'border-red-500' : 'border-transparent'
+            ]" />
 
-</div>
 
-</div>
+          </div>
 
-<!-- TITLE -->
-<h2 class="text-xl font-semibold mb-2">
-ลบโพสต์นี้ใช่ไหม?
-</h2>
+          <p v-if="errors.category" class="text-red-500 text-sm">
+            ⚠ {{ errors.category }}
+          </p>
 
-<p class="text-gray-500 mb-10">
-คุณแน่ใจหรือไม่ว่าต้องการลบโพสต์ของคุณ
-</p>
+          <p v-if="errors.time" class="text-red-500 text-sm">
+            ⚠ {{ errors.time }}
+          </p>
 
-<!-- BUTTONS -->
-<div class="flex justify-between gap-6">
+          <!-- DESCRIPTION -->
+          <div>
 
-<button
-@click="showDeleteModal = false"
-class="flex-1 border border-gray-300 py-4 rounded-xl text-lg font-medium"
->
-ยกเลิก
-</button>
+            <p v-if="errors.description" class="text-red-500 text-sm mb-1">
+              ⚠ {{ errors.description }}
+            </p>
+            <textarea v-model="description" placeholder="คำอธิบายสูตรอาหาร" :class="[
+              'w-full bg-gray-100 rounded-xl p-4 h-32 border',
+              errors.description ? 'border-red-500' : 'border-transparent'
+            ]" />
 
-<button
-@click="confirmDelete"
-class="flex-1 bg-red-500 text-white py-4 rounded-xl text-lg font-medium"
->
-ลบ
-</button>
+          </div>
 
-</div>
+        </div>
+      </div>
 
-</div>
+      <!-- INGREDIENTS -->
+      <div class="mt-8">
 
-</div>
+        <h2 class="mb-2 font-semibold">ส่วนผสม</h2>
 
+        <p v-if="errors.ingredients" class="text-red-500 text-sm mb-1">
+          ⚠ {{ errors.ingredients }}
+        </p>
+
+        <textarea v-model="ingredients" placeholder="• น้ำปลา 2 ช้อนโต๊ะ" :class="[
+          'w-full bg-gray-100 rounded-lg p-3 h-20 border',
+          errors.ingredients ? 'border-red-500' : 'border-transparent'
+        ]" />
+
+      </div>
+
+      <!-- STEPS -->
+      <div class="mt-8">
+
+        <h2 class="font-semibold mb-4">
+          วิธีทำ / ขั้นตอนการทำ
+        </h2>
+
+        <div v-for="(step, index) in steps" :key="index" class="flex gap-4 items-start mb-4">
+
+
+
+          <div class="flex-1">
+
+            <p v-if="errors[`step${index}`]" class="text-red-500 text-sm mb-1">
+              ⚠ {{ errors[`step${index}`] }}
+            </p>
+
+            <textarea v-model="step.text" :placeholder="`ขั้นตอนที่ ${index + 1}`" :class="[
+              'w-full bg-gray-100 rounded-lg p-3 h-28 border',
+              errors[`step${index}`] ? 'border-red-500' : 'border-transparent'
+            ]" />
+
+          </div>
+
+          <button @click="removeStep(index)" class="text-red-500">
+            <TrashIcon class="w-6 h-6" />
+          </button>
+
+        </div>
+
+        <div class="flex justify-center mt-6">
+
+          <button @click="addStep" class="bg-green-600 text-white px-10 py-3 rounded-lg">
+            + วิธีทำ / ขั้นตอนการทำ
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!-- CATEGORY MODAL -->
+  <div v-if="showCategoryModal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div class="bg-white rounded-xl p-6 w-[500px]">
+
+      <h2 class="text-lg font-semibold mb-4">เลือกหมวดหมู่</h2>
+
+      <!-- MAIN CATEGORY -->
+      <p class="mb-2 font-medium">ประเภทอาหาร</p>
+      <div class="flex flex-wrap gap-2 mb-4">
+        <button v-for="item in mainCategories" :key="item" @click="selectedMain = item" :class="[
+          'px-4 py-2 rounded-lg border',
+          selectedMain === item ? 'bg-green-600 text-white' : 'bg-gray-100'
+        ]">
+          {{ item }}
+        </button>
+      </div>
+
+      <!-- COOK TYPE -->
+      <p class="mb-2 font-medium">ประเภทการทำ</p>
+      <div class="flex flex-wrap gap-2 mb-6">
+        <button v-for="item in cookTypes" :key="item" @click="selectedCook = item" :class="[
+          'px-4 py-2 rounded-lg border',
+          selectedCook === item ? 'bg-green-600 text-white' : 'bg-gray-100'
+        ]">
+          {{ item }}
+        </button>
+      </div>
+
+      <!-- BUTTON -->
+      <div class="flex justify-end gap-2">
+        <button @click="showCategoryModal = false" class="px-4 py-2 border rounded-lg">
+          ยกเลิก
+        </button>
+
+        <button @click="confirmCategory" class="px-4 py-2 bg-green-600 text-white rounded-lg">
+          บันทึก
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <!-- DELETE MODAL -->
+  <div v-if="showDeleteModal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl p-8 w-[420px] text-center">
+
+      <!-- ICON -->
+      <div class="flex justify-center mb-4">
+        <div class="bg-red-100 p-4 rounded-full">
+          <TrashIcon class="w-8 h-8 text-red-500" />
+        </div>
+      </div>
+
+      <!-- TEXT -->
+      <h2 class="text-lg font-semibold mb-2">
+        ลบโพสต์นี้ใช่ไหม?
+      </h2>
+
+      <p class="text-gray-500 mb-6">
+        คุณแน่ใจหรือไม่ว่าต้องการลบโพสต์ของคุณ
+      </p>
+
+      <!-- BUTTON -->
+      <div class="flex justify-center gap-4">
+
+        <button @click="showDeleteModal = false" class="px-6 py-3 border rounded-lg w-32">
+          ยกเลิก
+        </button>
+
+        <button @click="confirmDelete" class="px-6 py-3 bg-red-500 text-white rounded-lg w-32">
+          ลบ
+        </button>
+
+      </div>
+
+    </div>
+  </div>
 </template>
