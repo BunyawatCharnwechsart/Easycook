@@ -45,7 +45,7 @@
                                             'px-4 py-1.5 rounded-full text-sm border transition-colors cursor-pointer',
                                             selectedMain.includes(cat)
                                                 ? 'bg-[#2C9A40] text-white border-[#2C9A40]'
-                                                : 'bg-gray-100 text-gray-700 border-gray-200 hover:border-[#2C9A40]'
+                                                : 'bg-gray-100 text-gray-700 border-gray-200 hover:border-[#2C9A40] '
                                         ]">
                                         {{ cat }}
                                     </button>
@@ -88,12 +88,12 @@
         </section>
         <section>
             <div class="flex flex-col w-full mt-10">
-                <h1 class="ml-10 text-4xl">หมวดหมู่แนะนำ</h1>
+                <h1 class="ml-10 text-4xl font-bold ">หมวดหมู่แนะนำ</h1>
                 <!--Card-->
                 <section class="m-10">
                     <RecommendedSection />
                 </section>
-                <h1 class="ml-10 mt-10 text-4xl">เมนูอาหารที่แนะนำ</h1>
+                <h1 class="ml-10 mt-10 text-4xl font-bold">เมนูอาหารที่แนะนำ</h1>
                 <section class="m-10">
                     <Cardmenu/>
                 </section>
@@ -124,10 +124,10 @@ const mainCategories = [
 ];
 
 const cookingCategories = [
-    "ผัด", "ทอด", "แกง", "นึ่ง",
-    "ย่าง", "อบ", "ผัดน้ำ", "คลุก / ยำ",
-    "ตุ๋น", "หมัก", "ดอง", "รมควัน",
-    "กวด", "ต้ม"
+    "ผัด", "ทอด", "ต้ม", "ครุก / ยำ",
+    "นึ่ง", "ย่าง", "อบ", "ตุ๋น",
+    "หมัก", "ดอง", "รมควัน", "ผัดน้ำ",
+    "แกง"
 ];
 
 const selectedMain = ref([]);
