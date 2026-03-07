@@ -93,6 +93,34 @@ const handleSubmit = async () => {
 <template>
     <div style="font-family: 'Bai Jamjuree'">
         <navBar/>
-                   
+        <form class="flex" @submit.prevent="handleSubmit">
+            <section class="flex">
+                <div 
+                    class=""
+                    @click="triggerFileInput" @dragover.prevent @drop.prevent="handleDrop"   
+                >
+                    <!--input image-->
+                    <input 
+                        ref="fileInput"
+                        class="hidden"
+                        type="file" accept="image/jpeg,image/png,image/webp"
+                        @change="handleFileChange"
+                    >
+                    <div v-if="!imagePreview" class="text-center text-gray-400">
+                        <div class="text-4xl mb-2">click</div>
+                        <p class="text-sm">กรุณาอัปโหลดรูปภาพเมนูอาหาร</p>
+                        <p class="text-xs text-gray-300 mt-1">JPG, PNG, WEBP ไม่เกิน 5MB</p>
+                    </div>
+
+                    <div v-else class="relative w-full h-full">
+                        <img :src="imagePreview" class="w-full h-full object-cover" >
+                        <button 
+                            class="absolute top-2 right-2 bg-black/50 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs hover:bg-black/70"
+                            type="button"
+                            @click.stop="removeImage">✕</button>
+                    </div>
+                </div>
+            </section>
+        </form>
     </div>
 </template>
