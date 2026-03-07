@@ -27,6 +27,7 @@ const { data: menus } = await useAsyncData('menus', () =>
 
             <!-- ข้อมูลหลัก -->
             <h2 class="text-lg font-bold">{{ m.mname }}</h2>
+            <p>menuid : {{ m.menuid }}</p>
             <p class="text-gray-500 text-sm">หมวดหมู่: {{ m.categoryname }} · เวลา: {{ m.cooktime }} นาที</p>
             <p class="text-gray-400 text-sm">โดย: {{ m.author_name }}</p>
             <p v-if="m.description" class="mt-2 text-gray-700">{{ m.description }}</p>
