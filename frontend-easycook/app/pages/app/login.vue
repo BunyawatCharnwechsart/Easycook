@@ -11,7 +11,7 @@ const showPassword = ref(false)
     <!-- LEFT IMAGE -->
     <div class="hidden md:block flex-[1.9] relative">
       <img
-        src="/Easycook mian.png"
+        src="/easycook-mian.png"
         class="absolute inset-0 w-full h-full object-cover object-left"
       />
     </div>

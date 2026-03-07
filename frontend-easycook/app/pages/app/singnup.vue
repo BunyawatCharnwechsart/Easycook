@@ -5,18 +5,18 @@ import { EyeIcon, EyeSlashIcon } from '@heroicons/vue/24/outline'
 const showPassword = ref(false)
 const showConfirmPassword = ref(false)
 
-const username = ref('')
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
+
 const errorMessage = ref('')
 const successMessage = ref('')
 
-const handleRegister = () => {
+const handleResetPassword = () => {
   errorMessage.value = ''
   successMessage.value = ''
 
-  if (!username.value || !email.value || !password.value || !confirmPassword.value) {
+  if (!email.value || !password.value || !confirmPassword.value) {
     errorMessage.value = 'กรุณากรอกข้อมูลให้ครบทุกช่อง'
     return
   }
@@ -31,7 +31,7 @@ const handleRegister = () => {
     return
   }
 
-  successMessage.value = 'สมัครบัญชีสำเร็จ 🎉'
+  successMessage.value = 'ตั้งรหัสผ่านใหม่สำเร็จ'
 }
 </script>
 
@@ -40,15 +40,12 @@ const handleRegister = () => {
 
     <!-- LEFT IMAGE -->
     <div class="hidden md:block flex-[1.9] relative">
-      <img
-        src="/Easycook mian.png"
-        class="absolute inset-0 w-full h-full object-cover object-left"
-      />
+      <img src="/easycook-mian.png" class="absolute inset-0 w-full h-full object-cover object-left" />
     </div>
 
     <!-- RIGHT FORM -->
     <div class="flex-1 flex items-center justify-center bg-white">
-    <div class="w-full max-w-md p-12 bg-white rounded-3xl shadow-xl">
+      <div class="w-full max-w-md p-12 bg-white rounded-3xl shadow-xl">
 
         <!-- LOGO -->
         <div class="flex justify-center mb-4">
@@ -56,45 +53,26 @@ const handleRegister = () => {
         </div>
 
         <h2 class="text-2xl font-bold text-center mb-6">
-          สมัครบัญชี
+          ลืมรหัสผ่าน
         </h2>
 
-        <form class="space-y-5" @submit.prevent="handleRegister">
-
-          <!-- Username -->
-          <div>
-            <label class="block text-sm text-gray-600">ชื่อผู้ใช้</label>
-            <input
-              v-model="username"
-              type="text"
-              class="w-full mt-1 px-4 py-3 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
-            />
-          </div>
+        <form class="space-y-5" @submit.prevent="handleResetPassword">
 
           <!-- Email -->
           <div>
             <label class="block text-sm text-gray-600">อีเมล</label>
-            <input
-              v-model="email"
-              type="email"
-              class="w-full mt-1 px-4 py-3 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
-            />
+            <input v-model="email" type="email" placeholder="กรอกอีเมลที่ใช้สมัคร"
+              class="w-full mt-1 px-4 py-3 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition" />
           </div>
 
           <!-- Password -->
           <div>
-            <label class="block text-sm text-gray-600">รหัสผ่าน</label>
+            <label class="block text-sm text-gray-600">รหัสผ่านใหม่</label>
             <div class="relative mt-1">
-              <input
-                v-model="password"
-                :type="showPassword ? 'text' : 'password'"
-                class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl shadow-sm pr-12 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
-              />
-              <button
-                type="button"
-                @click="showPassword = !showPassword"
-                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-green-600 transition"
-              >
+              <input v-model="password" :type="showPassword ? 'text' : 'password'"
+                class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl shadow-sm pr-12 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition" />
+              <button type="button" @click="showPassword = !showPassword"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-green-600 transition">
                 <EyeIcon v-if="!showPassword" class="w-5 h-5" />
                 <EyeSlashIcon v-else class="w-5 h-5" />
               </button>
@@ -103,18 +81,12 @@ const handleRegister = () => {
 
           <!-- Confirm Password -->
           <div>
-            <label class="block text-sm text-gray-600">ยืนยันรหัสผ่าน</label>
+            <label class="block text-sm text-gray-600">ยืนยันรหัสผ่านใหม่</label>
             <div class="relative mt-1">
-              <input
-                v-model="confirmPassword"
-                :type="showConfirmPassword ? 'text' : 'password'"
-                class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl shadow-sm pr-12 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
-              />
-              <button
-                type="button"
-                @click="showConfirmPassword = !showConfirmPassword"
-                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-green-600 transition"
-              >
+              <input v-model="confirmPassword" :type="showConfirmPassword ? 'text' : 'password'"
+                class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl shadow-sm pr-12 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition" />
+              <button type="button" @click="showConfirmPassword = !showConfirmPassword"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-green-600 transition">
                 <EyeIcon v-if="!showConfirmPassword" class="w-5 h-5" />
                 <EyeSlashIcon v-else class="w-5 h-5" />
               </button>
@@ -132,15 +104,13 @@ const handleRegister = () => {
           </p>
 
           <!-- BUTTON -->
-          <button
-            type="submit"
-            class="w-full bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition font-medium"
-          >
-            สมัครบัญชี
+          <button type="submit"
+            class="w-full bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition font-medium">
+            ตั้งรหัสผ่านใหม่
           </button>
 
           <p class="text-center text-sm mt-3">
-            มีบัญชีแล้ว?
+            กลับไป
             <NuxtLink to="/app/login" class="text-green-600 font-medium hover:underline">
               เข้าสู่ระบบ
             </NuxtLink>
