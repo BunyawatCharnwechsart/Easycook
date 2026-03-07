@@ -7,12 +7,12 @@ const { data: menus } = await useAsyncData('menus', () =>
 </script>
 
 <template>
-    <div class="m-10">
-        <div class="flex gap-20">
+    <div class="m-1">
+        <div class="flex flex-wrap gap-5">
             <div
                 v-for="m in menus"
                 :key="m.menuid"
-                class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden cursor-pointer w-90"
+                class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden cursor-pointer w-80"
             >
                 <!-- รูปภาพ -->
                 <div class="relative">

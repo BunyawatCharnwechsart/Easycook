@@ -108,7 +108,6 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import navBar from "~/components/navBar.vue";
 import RecommendedSection from '~/components/RecommendedSection.vue';
-import RecommendedMenu from '~/components/RecommendedMenu.vue';
 import aboutFooter from '~/components/aboutFooter.vue';
 
 const isOpen = ref(false);
