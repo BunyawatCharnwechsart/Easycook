@@ -68,13 +68,14 @@
 
       </div>
     </section>
-
+    <aboutFooter/>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import navBar from "~/components/navBar.vue";
+import aboutFooter from "~/components/aboutFooter.vue";
 
 const images = [
   "/about.1.png",
