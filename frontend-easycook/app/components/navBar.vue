@@ -11,7 +11,7 @@
 
         <!-- หมวดหมู่ -->
         <ul class="flex items-center gap-20 text-black font-medium">
-            <nuxt-link to="/app/createmenu">
+            <nuxt-link to="/app/recipe">
                 <li class="cursor-pointer hover:underline transition-all duration-200">เพิ่มสูตร</li>
             </nuxt-link>
             <nuxt-link to="/app/category">
