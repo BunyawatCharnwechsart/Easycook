@@ -127,7 +127,7 @@ const handleRegister = () => {
 
                     <p class="text-center text-sm mt-3">
                         มีบัญชีแล้ว?
-                        <NuxtLink to="/app/login" class="text-green-600 font-medium hover:underline">
+                        <NuxtLink to="/auth/login" class="text-green-600 font-medium hover:underline">
                             เข้าสู่ระบบ
                         </NuxtLink>
                     </p>
