@@ -40,10 +40,18 @@ const showDeleteModal = ref(false)
 
 const form = reactive({
     mname: '',
-    cooktime: '',
+    cookhours: null,
+    cookminutes: null,
     description: '',
     ingredients: [''],
     steps: [{ step: '' }],
+})
+
+// แปลง ชั่วโมง + นาที → นาที รวม
+const totalCooktime = computed(() => {
+    const h = form.cookhours || 0
+    const m = form.cookminutes || 0
+    return h * 60 + m
 })
 
 // --- image ---
@@ -101,7 +109,7 @@ const confirmDelete = () => {
 // --- submit ---
 const handleSubmit = async () => {
     errorMsg.value = ''
-    if (!form.mname || !form.cooktime || !selectedCategory.value) {
+    if (!form.mname || totalCooktime.value <= 0 || !selectedCategory.value) {
         errorMsg.value = 'กรุณากรอกข้อมูลที่จำเป็นให้ครบ'
         return
     }
@@ -111,7 +119,7 @@ const handleSubmit = async () => {
         const formData = new FormData()
         formData.append('uid', '1') // TODO: เปลี่ยนเป็น uid จริงจาก auth
         formData.append('mname', form.mname)
-        formData.append('cooktime', String(form.cooktime))
+        formData.append('cooktime', String(totalCooktime.value))
         formData.append('categoryname', selectedCategory.value)
         if (form.description) formData.append('description', form.description)
         formData.append('ingredients', JSON.stringify(form.ingredients.filter(i => i.trim())))
@@ -236,12 +244,21 @@ const handleSubmit = async () => {
                             </div>
 
                             <p class="text-sm ml-4">เวลาที่ใช้</p>
-                            <input
-                                v-model.number="form.cooktime"
-                                type="number"
-                                min="1"
-                                placeholder="เช่น 30 นาที"
-                                class="bg-gray-100 rounded-lg p-3 w-44 border border-transparent focus:border-amber-400 outline-none" >
+                            <div class="flex items-center gap-2">
+                                <input
+                                    v-model.number="form.cookhours"
+                                    type="number"
+                                    min="0"
+                                    class="bg-gray-100 rounded-lg p-3 w-20 border border-transparent focus:border-amber-400 outline-none text-center" >
+                                <span class="text-sm text-gray-500">ชั่วโมง</span>
+                                <input
+                                    v-model.number="form.cookminutes"
+                                    type="number"
+                                    min="0"
+                                    max="59"
+                                    class="bg-gray-100 rounded-lg p-3 w-20 border border-transparent focus:border-amber-400 outline-none text-center" >
+                                <span class="text-sm text-gray-500">นาที</span>
+                            </div>
                         </div>
 
                         <!-- DESCRIPTION -->
