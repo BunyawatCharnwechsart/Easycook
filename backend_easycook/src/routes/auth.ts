@@ -29,7 +29,7 @@ auth.post("/register", async (c) => {
         .first()
 
     if (existing) {
-        return c.json({ message: "Email or username already exists" }, 409)
+        return c.json({ message: "อีเมลหรือชื่อผู้ใช้ซ้ำ" }, 409)
     }
 
     const hashed = await hashPassword(password)
@@ -39,7 +39,7 @@ auth.post("/register", async (c) => {
         .bind(name, username, email, hashed)
         .run()
 
-    return c.json({ message: "Registered successfully" }, 201)
+    return c.json({ message: "สมัครสมาชิกสำเร็จ" }, 201)
 })
 
 auth.post("/login", async (c) => {
@@ -59,13 +59,13 @@ auth.post("/login", async (c) => {
         .first()
 
     if (!user) {
-        return c.json({ message: "Invalid credentials" }, 401)
+        return c.json({ message: "ชื่อหรือรหัสผ่านผิด" }, 401)
     }
 
     const isValid = await comparePassword(password, user.password as string)
 
     if (!isValid) {
-        return c.json({ message: "Invalid credentials" }, 401)
+        return c.json({ message: "ชื่อหรือรหัสผ่านผิด" }, 401)
     }
 
     const token = await generateToken(

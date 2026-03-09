@@ -1,4 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
+import type { NuxtPage } from 'nuxt/schema'
 
 export default defineNuxtConfig({
     app:{
@@ -10,11 +11,11 @@ export default defineNuxtConfig({
     },
     compatibilityDate: '2025-07-15',
     devtools: {
-      enabled: true,
-
-      timeline: {
         enabled: true,
-      },
+
+        timeline: {
+            enabled: true,
+        },
     },
     css: ['./app/assets/css/main.css'],
     vite: {
@@ -33,5 +34,22 @@ export default defineNuxtConfig({
             apiBase: '',
             apiUrl: process.env.NUXT_PUBLIC_API_URL
         }
+    },
+        hooks: {
+        'pages:extend' (pages) {
+        function setMiddleware (pages: NuxtPage[]) {
+            for (const page of pages) {
+            if (page.path?.startsWith('/app/recipe')) {
+                page.meta ||= {}
+                // Note that this will override any middleware set in `definePageMeta` in the page
+                page.meta.middleware = ['auth']
+            }
+            if (page.children) {
+                setMiddleware(page.children)
+            }
+            }
+        }
+        setMiddleware(pages)
+        },
     },
 })
