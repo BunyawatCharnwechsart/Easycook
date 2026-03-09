@@ -42,7 +42,7 @@ const handleRegister = async () => {
     isLoading.value = true
 
     try {
-        const res = await fetch(`${config.public.apiUrl}/auth/register`, {
+        const res = await fetch(`${config.public.apiBase}/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
