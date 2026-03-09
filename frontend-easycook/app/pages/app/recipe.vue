@@ -1,6 +1,10 @@
 <script setup>
 import { TrashIcon, PhotoIcon } from "@heroicons/vue/24/outline"
 
+definePageMeta({
+    middleware: 'auth'
+})
+
 const config = useRuntimeConfig()
 const router = useRouter()
 

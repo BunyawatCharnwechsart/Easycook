@@ -1,5 +1,5 @@
 <script setup>
-navigateTo('/auth/register')
+navigateTo('/app/main')
 </script>
 
 <template>
