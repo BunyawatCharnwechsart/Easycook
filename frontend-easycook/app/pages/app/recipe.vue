@@ -1,12 +1,15 @@
 <script setup>
 import { TrashIcon, PhotoIcon } from "@heroicons/vue/24/outline"
 
-definePageMeta({
-    middleware: ['auth']
-})
-
 const config = useRuntimeConfig()
 const router = useRouter()
+
+// ดึง user จาก localStorage
+const user = ref(null)
+onMounted(() => {
+    const stored = localStorage.getItem('user')
+    if (stored) user.value = JSON.parse(stored)
+})
 
 const loading = ref(false)
 const errorMsg = ref('')
@@ -14,14 +17,12 @@ const imagePreview = ref(null)
 const coverFile = ref(null)
 const fileInput = ref(null)
 
-// Category modal
 const showCategoryModal = ref(false)
 const selectedCategory = ref('')
 const categories = ref([])
 const categoriesLoading = ref(false)
 const categoriesError = ref('')
 
-// Fetch categories from API
 const fetchCategories = async () => {
     categoriesLoading.value = true
     categoriesError.value = ''
@@ -39,7 +40,6 @@ onMounted(() => {
     fetchCategories()
 })
 
-// Delete modal
 const showDeleteModal = ref(false)
 
 const form = reactive({
@@ -51,25 +51,15 @@ const form = reactive({
     steps: [{ step: '' }],
 })
 
-// แปลง ชั่วโมง + นาที → นาที รวม
 const totalCooktime = computed(() => {
     const h = form.cookhours || 0
     const m = form.cookminutes || 0
     return h * 60 + m
 })
 
-// --- image ---
 const triggerFileInput = () => fileInput.value?.click()
-
-const handleFileChange = (e) => {
-    const file = e.target.files?.[0]
-    if (file) setFile(file)
-}
-
-const handleDrop = (e) => {
-    const file = e.dataTransfer?.files[0]
-    if (file) setFile(file)
-}
+const handleFileChange = (e) => { const file = e.target.files?.[0]; if (file) setFile(file) }
+const handleDrop = (e) => { const file = e.dataTransfer?.files[0]; if (file) setFile(file) }
 
 const setFile = (file) => {
     const allowed = ['image/jpeg', 'image/png', 'image/webp']
@@ -86,33 +76,28 @@ const removeImage = () => {
     if (fileInput.value) fileInput.value.value = ''
 }
 
-// --- ingredients ---
 const addIngredient = () => form.ingredients.push('')
 const removeIngredient = (i) => form.ingredients.splice(i, 1)
-
-// --- steps ---
 const addStep = () => form.steps.push({ step: '' })
 const removeStep = (i) => form.steps.splice(i, 1)
-
-// --- category ---
-const confirmCategory = () => {
-    showCategoryModal.value = false
-}
-
+const confirmCategory = () => { showCategoryModal.value = false }
 const openCategoryModal = () => {
     if (categories.value.length === 0) fetchCategories()
     showCategoryModal.value = true
 }
 
-// --- delete ---
 const confirmDelete = () => {
     showDeleteModal.value = false
-    router.push('/app/testapi')
+    router.push('/app/main')
 }
 
-// --- submit ---
 const handleSubmit = async () => {
     errorMsg.value = ''
+
+    if (!user.value) {
+        return navigateTo('/auth/login')
+    }
+
     if (!form.mname || totalCooktime.value <= 0 || !selectedCategory.value) {
         errorMsg.value = 'กรุณากรอกข้อมูลที่จำเป็นให้ครบ'
         return
@@ -120,8 +105,10 @@ const handleSubmit = async () => {
 
     loading.value = true
     try {
+        const token = localStorage.getItem('token')
         const formData = new FormData()
-        formData.append('uid', '1') // TODO: เปลี่ยนเป็น uid จริงจาก auth
+
+        formData.append('uid', String(user.value.id)) // ✅ uid จาก user จริง
         formData.append('mname', form.mname)
         formData.append('cooktime', String(totalCooktime.value))
         formData.append('categoryname', selectedCategory.value)
@@ -132,10 +119,11 @@ const handleSubmit = async () => {
 
         await $fetch(`${config.public.apiBase}/menu`, {
             method: 'POST',
+            headers: { Authorization: `Bearer ${token}` },
             body: formData,
         })
 
-        router.push('/app/testapi')
+        router.push('/app/main')
     } catch (err) {
         errorMsg.value = err?.data?.error || err?.message || 'เกิดข้อผิดพลาด'
     } finally {
@@ -158,9 +146,12 @@ const handleSubmit = async () => {
                 <!-- HEADER -->
                 <div class="flex justify-between mb-6">
                     <div class="flex items-center gap-3">
-                        <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" >
+                        <img 
+                            :src="user?.profile_image || `https://ui-avatars.com/api/?name=${user?.name}&background=16a34a&color=fff`"
+                            class="w-10 h-10 rounded-full object-cover"
+                        >
                         <div>
-                            <p class="font-semibold">ผู้ใช้งาน</p>
+                            <p class="font-semibold">{{ user?.name || 'ผู้ใช้งาน' }}</p>
                             <p class="text-sm text-gray-400">ผู้เขียน</p>
                         </div>
                     </div>

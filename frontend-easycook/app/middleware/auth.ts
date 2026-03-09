@@ -1,6 +1,8 @@
 export default defineNuxtRouteMiddleware(() => {
-    const token = useCookie('token')
-    if (!token.value) {
-        return navigateTo('/auth/login')
+    if (import.meta.client) {
+        const token = localStorage.getItem('token')
+        if (!token) {
+            return navigateTo('/auth/login')
+        }
     }
 })

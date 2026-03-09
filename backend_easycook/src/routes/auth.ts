@@ -86,6 +86,7 @@ auth.post("/login", async (c) => {
             name: user.name,
             username: user.username,
             email: user.email,
+            profile_image: user.profile_image,
             token : generateToken
         },
     })
