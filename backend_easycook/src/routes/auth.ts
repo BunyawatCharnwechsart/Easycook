@@ -84,6 +84,7 @@ auth.post("/login", async (c) => {
             name: user.name,
             username: user.username,
             email: user.email,
+            token : generateToken
         },
     })
 })
