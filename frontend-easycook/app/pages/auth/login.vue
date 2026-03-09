@@ -101,7 +101,9 @@ const handleLogin = async () => {
                     </div>
 
                     <div class="text-right">
-                        <a href="#" class="text-sm text-blue-500 hover:underline">ลืมรหัสผ่าน?</a>
+                        <NuxtLink to="/auth/resetpassword" class="text-sm text-blue-500 hover:underline">
+                            ลืมรหัสผ่าน?
+                        </NuxtLink>
                     </div>
 
                     <!-- ERROR -->

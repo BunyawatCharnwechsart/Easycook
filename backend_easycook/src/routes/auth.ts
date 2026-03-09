@@ -6,6 +6,7 @@ import { Bindings } from "../types/bindings"
 
 export const auth = new Hono<{ Bindings: Bindings }>()
 
+//register
 auth.post("/register", async (c) => {
     const { name, username, email, password } = await c.req.json()
 
@@ -42,6 +43,7 @@ auth.post("/register", async (c) => {
     return c.json({ message: "สมัครสมาชิกสำเร็จ" }, 201)
 })
 
+//login
 auth.post("/login", async (c) => {
     const { identifier, password } = await c.req.json()
 
@@ -87,4 +89,38 @@ auth.post("/login", async (c) => {
             token : generateToken
         },
     })
+})
+
+
+//resetpass
+auth.post("/change-password", async (c) => {
+    const { username, email, newPassword } = await c.req.json()
+
+    if (!username || !email || !newPassword) {
+        return c.json({ message: "Missing fields" }, 400)
+    }
+
+    if (newPassword.length < 6) {
+        return c.json({ message: "Password must be at least 6 characters" }, 400)
+    }
+
+    const db = getDb(c)
+
+    const user = await db
+        .prepare("SELECT uid FROM users WHERE LOWER(email) = LOWER(?) AND LOWER(username) = LOWER(?)")
+        .bind(email, username)
+        .first()
+
+    if (!user) {
+        return c.json({ message: "ไม่พบผู้ใช้งาน" }, 404)
+    }
+
+    const hashed = await hashPassword(newPassword)
+
+    await db
+        .prepare("UPDATE users SET password = ? WHERE uid = ?")
+        .bind(hashed, user.uid)
+        .run()
+
+    return c.json({ message: "เปลี่ยนรหัสผ่านสำเร็จ" })
 })
