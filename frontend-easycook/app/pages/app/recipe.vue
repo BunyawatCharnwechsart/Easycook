@@ -2,7 +2,7 @@
 import { TrashIcon, PhotoIcon } from "@heroicons/vue/24/outline"
 
 definePageMeta({
-    middleware: 'auth'
+    middleware: ['auth']
 })
 
 const config = useRuntimeConfig()

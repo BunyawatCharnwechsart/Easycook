@@ -11,9 +11,10 @@ export async function authMiddleware(c: any, next: any) {
 
     try {
         const secret = c.env.JWT_SECRET
-        const decoded = verifyToken(token, secret)
+        const decoded = await verifyToken(token, secret)
 
         c.set("user", decoded)
+
         await next()
     } catch {
         return c.json({ message: "Invalid token" }, 401)

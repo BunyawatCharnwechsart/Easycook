@@ -106,9 +106,9 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import navBar from "~/components/navBar.vue";
+import navBar from "~/components/NavBar.vue";
 import RecommendedSection from '~/components/RecommendedSection.vue';
-import aboutFooter from '~/components/aboutFooter.vue';
+import aboutFooter from '~/components/AboutFooter.vue';
 
 const isOpen = ref(false);
 const dropdownRef = ref(null);
@@ -138,13 +138,24 @@ const toggleDropdown = () => {
 
 const toggleCategory = (cat, type) => {
     if (type === 'main') {
-        const idx = selectedMain.value.indexOf(cat);
-        idx === -1 ? selectedMain.value.push(cat) : selectedMain.value.splice(idx, 1);
+        const idx = selectedMain.value.indexOf(cat)
+
+        if (idx === -1) {
+        selectedMain.value.push(cat)
+        } else {
+        selectedMain.value.splice(idx, 1)
+        }
+
     } else {
-        const idx = selectedCooking.value.indexOf(cat);
-        idx === -1 ? selectedCooking.value.push(cat) : selectedCooking.value.splice(idx, 1);
+        const idx = selectedCooking.value.indexOf(cat)
+
+        if (idx === -1) {
+        selectedCooking.value.push(cat)
+        } else {
+        selectedCooking.value.splice(idx, 1)
+        }
     }
-};
+}
 
 const clearAll = () => {
     selectedMain.value = [];

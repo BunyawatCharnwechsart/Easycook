@@ -53,8 +53,8 @@
 </template>
 
 <script setup>
-import navBar from '~/components/navBar.vue';
-import aboutFooter from '~/components/aboutFooter.vue';
+import navBar from '~/components/NavBar.vue';
+import aboutFooter from '~/components/AboutFooter.vue';
 import ADS from '~/components/ADS.vue';
 import RecommendedSection from '~/components/RecommendedSection.vue';
 import RecommendedMenu from '~/components/RecommendedMenu.vue';
