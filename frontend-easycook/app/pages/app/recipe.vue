@@ -146,7 +146,10 @@ const handleSubmit = async () => {
                 <!-- HEADER -->
                 <div class="flex justify-between mb-6">
                     <div class="flex items-center gap-3">
-                        <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" >
+                        <img 
+                            :src="user?.profile_image || `https://ui-avatars.com/api/?name=${user?.name}&background=16a34a&color=fff`"
+                            class="w-10 h-10 rounded-full object-cover"
+                        >
                         <div>
                             <p class="font-semibold">{{ user?.name || 'ผู้ใช้งาน' }}</p>
                             <p class="text-sm text-gray-400">ผู้เขียน</p>

@@ -3,19 +3,19 @@ import { getDb } from "../db";
 
 const menu = new Hono()
 
-menu.post('/', async (c) =>{
+menu.post('/', async (c) => {
     try {
         const body = await c.req.parseBody()
         // parse fields จาก FormData
-        const uid          = Number(body['uid'])
-        const mname        = body['mname'] as string
-        const cooktime     = Number(body['cooktime'])
-        const description  = body['description'] as string | undefined
+        const uid = Number(body['uid'])
+        const mname = body['mname'] as string
+        const cooktime = Number(body['cooktime'])
+        const description = body['description'] as string | undefined
         const categoryname = body['categoryname'] as string
-        const ingredients  = JSON.parse((body['ingredients'] as string) || '[]') as string[]
-        const steps        = JSON.parse((body['steps'] as string) || '[]') as { step: string; step_image?: string }[]
+        const ingredients = JSON.parse((body['ingredients'] as string) || '[]') as string[]
+        const steps = JSON.parse((body['steps'] as string) || '[]') as { step: string; step_image?: string }[]
 
-         // validate
+        // validate
         if (!uid || !mname || !cooktime || !categoryname) {
             return c.json({ error: 'กรุณากรอกข้อมูลให้ครบ' }, 400)
         }
@@ -88,7 +88,7 @@ menu.post('/', async (c) =>{
         }
 
         return c.json({ message: 'Created', menuid }, 201)
-    } catch(err:any){
+    } catch (err: any) {
         return c.json({ error: err?.message || String(err) }, 500)
     }
 })
@@ -111,7 +111,7 @@ menu.get('/', async (c) => {
             WHERE m.status = 'published'
             ORDER BY m.created_at DESC
         `)
-        .all()
+            .all()
 
         if (!menuList.results || menuList.results.length === 0) {
             return c.json([])
@@ -127,16 +127,16 @@ menu.get('/', async (c) => {
                 WHERE menuid IN (${placeholders})
                 ORDER BY menuid, ingredient_order
             `)
-            .bind(...menuIds)
-            .all(),
+                .bind(...menuIds)
+                .all(),
 
             db.prepare(`
                 SELECT * FROM makestep
                 WHERE menuid IN (${placeholders})
                 ORDER BY menuid, step_order
             `)
-            .bind(...menuIds)
-            .all(),
+                .bind(...menuIds)
+                .all(),
         ])
 
         // Group ingredients และ steps ตาม menuid
@@ -158,7 +158,7 @@ menu.get('/', async (c) => {
         const result = menuList.results.map((m: any) => ({
             ...m,
             ingredients: ingredientMap[m.menuid] || [],
-            steps:       stepMap[m.menuid]       || [],
+            steps: stepMap[m.menuid] || [],
         }))
 
         return c.json(result)
