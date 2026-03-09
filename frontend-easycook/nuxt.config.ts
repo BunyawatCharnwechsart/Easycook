@@ -9,7 +9,13 @@ export default defineNuxtConfig({
         }
     },
     compatibilityDate: '2025-07-15',
-    devtools: { enabled: true },
+    devtools: {
+      enabled: true,
+
+      timeline: {
+        enabled: true,
+      },
+    },
     css: ['./app/assets/css/main.css'],
     vite: {
         plugins:
@@ -27,5 +33,5 @@ export default defineNuxtConfig({
             apiBase: '',
             apiUrl: process.env.NUXT_PUBLIC_API_URL
         }
-    }
+    },
 })
