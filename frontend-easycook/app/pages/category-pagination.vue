@@ -80,13 +80,6 @@
 
 <script setup>
 import { ref, computed, onMounted, provide } from "vue"
-import navBar from "~/components/NavBar.vue"
-import SearchBar from "~/components/SearchBar.vue"
-import MenuCard from "~/components/MenuCard.vue"
-import PaginationBar from "~/components/PaginationBar.vue"
-import RecommendedSection from '~/components/RecommendedSection.vue'
-import Cardmenu from '~/components/CardMenu.vue'
-import aboutFooter from '~/components/AboutFooter.vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
