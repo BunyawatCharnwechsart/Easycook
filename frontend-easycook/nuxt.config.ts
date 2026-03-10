@@ -31,8 +31,7 @@ export default defineNuxtConfig({
     ],
     runtimeConfig: {
         public: {
-            apiBase: '',
-            apiUrl: process.env.NUXT_PUBLIC_API_URL
+            apiBase: process.env.NUXT_PUBLIC_API_BASE
         }
     },
         hooks: {
