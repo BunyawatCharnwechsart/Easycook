@@ -1,7 +1,4 @@
 <script setup>
-import navBar from '~/components/navBar.vue';
-import AboutFooter from '~/components/AboutFooter.vue';
-
 const config = useRuntimeConfig()
 const route = useRoute()
 const menuid = Number(route.params.menuid)
