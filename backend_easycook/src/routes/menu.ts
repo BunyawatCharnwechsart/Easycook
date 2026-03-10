@@ -168,6 +168,33 @@ menu.get('/', async (c) => {
     }
 })
 
+// GET /menu/recommend — สุ่มเมนูแนะนำ 10 รายการ
+menu.get('/recommend', async (c) => {
+    try {
+        const db = getDb(c)
+
+        const menuList = await db.prepare(`
+            SELECT 
+                m.*,
+                c.categoryname,
+                u.name          AS author_name,
+                u.username      AS author_username,
+                u.profile_image AS author_image
+            FROM menu m
+            JOIN category c ON m.categoryid = c.categoryid
+            JOIN users u    ON m.uid = u.uid
+            WHERE m.status = 'published'
+            ORDER BY RANDOM()
+            LIMIT 10
+        `).all()
+
+        return c.json(menuList.results ?? [])
+
+    } catch (err: any) {
+        return c.json({ error: err?.message || String(err) }, 500)
+    }
+})
+
 //menu+วัตถุดิบ,ขั้นตอน by ID
 menu.get('/:menuid', async (c) => {
     try {

@@ -2,7 +2,7 @@
 const config = useRuntimeConfig()
 
 const { data: menus } = await useAsyncData('menus', () =>
-    $fetch(`${config.public.apiBase}/menu`)
+    $fetch(`${config.public.apiBase}/menu/recommend`)
 )
 </script>
 

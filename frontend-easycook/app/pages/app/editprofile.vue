@@ -113,7 +113,8 @@
                     class="px-16 py-2.5 border-2 border-orange-500 text-orange-500 font-bold rounded-md hover:bg-orange-50 transition text-sm">
                     ยกเลิก
                 </button>
-                <button @click="onSave"
+                <button 
+                    @click="onSave"
                     class="px-16 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-md transition text-sm">
                     บันทึก
                 </button>
