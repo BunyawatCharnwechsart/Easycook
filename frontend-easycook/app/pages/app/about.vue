@@ -73,7 +73,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import navBar from "~/components/NavBar.vue";
+import navBar from '~/components/navBar.vue'
 import aboutFooter from "~/components/AboutFooter.vue";
 
 const images = [
