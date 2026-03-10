@@ -1,5 +1,5 @@
 <script setup>
-navigateTo('/main')
+navigateTo('/app/main')
 </script>
 
 <template>
