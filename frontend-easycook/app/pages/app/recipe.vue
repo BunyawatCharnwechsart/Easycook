@@ -44,8 +44,8 @@ const showDeleteModal = ref(false)
 
 const form = reactive({
     mname: '',
-    cookhours: null,
-    cookminutes: null,
+    cookhours: 0,      
+    cookminutes: 1,     
     description: '',
     ingredients: [''],
     steps: [{ step: '' }],
@@ -64,7 +64,7 @@ const handleDrop = (e) => { const file = e.dataTransfer?.files[0]; if (file) set
 const setFile = (file) => {
     const allowed = ['image/jpeg', 'image/png', 'image/webp']
     if (!allowed.includes(file.type)) { errorMsg.value = 'รองรับเฉพาะ jpg, png, webp'; return }
-    if (file.size > 5 * 1024 * 1024) { errorMsg.value = 'ไฟล์ใหญ่เกิน 5MB'; return }
+    if (file.size > 10 * 1024 * 1024) { errorMsg.value = 'ไฟล์ใหญ่เกิน 10MB'; return }
     coverFile.value = file
     imagePreview.value = URL.createObjectURL(file)
     errorMsg.value = ''
@@ -208,7 +208,7 @@ const handleSubmit = async () => {
                             <div v-if="!imagePreview" class="flex flex-col items-center text-gray-400">
                                 <PhotoIcon class="w-10 h-10" />
                                 <p class="text-sm mt-2">อัปโหลดรูปเมนูที่คุณทำ</p>
-                                <p class="text-xs text-gray-300 mt-1">JPG, PNG, WEBP ไม่เกิน 5MB</p>
+                                <p class="text-xs text-gray-300 mt-1">JPG, PNG, WEBP ไม่เกิน 10MB</p>
                             </div>
                         </label>
                     </div>
@@ -244,14 +244,20 @@ const handleSubmit = async () => {
                                     v-model.number="form.cookhours"
                                     type="number"
                                     min="0"
-                                    class="bg-gray-100 rounded-lg p-3 w-20 border border-transparent focus:border-amber-400 outline-none text-center" >
+                                    step="1"
+                                    class="bg-gray-100 rounded-lg p-3 w-20 border border-transparent focus:border-amber-400 outline-none text-center"
+                                    @input="form.cookhours = Math.floor(Math.max(0, form.cookhours || 0))"
+                                >
                                 <span class="text-sm text-gray-500">ชั่วโมง</span>
                                 <input
                                     v-model.number="form.cookminutes"
                                     type="number"
                                     min="0"
                                     max="59"
-                                    class="bg-gray-100 rounded-lg p-3 w-20 border border-transparent focus:border-amber-400 outline-none text-center" >
+                                    step="1"
+                                    class="bg-gray-100 rounded-lg p-3 w-20 border border-transparent focus:border-amber-400 outline-none text-center"
+                                    @input="form.cookminutes = Math.floor(Math.min(59, Math.max(0, form.cookminutes || 0)))"
+                                >
                                 <span class="text-sm text-gray-500">นาที</span>
                             </div>
                         </div>
