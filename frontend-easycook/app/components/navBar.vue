@@ -35,7 +35,7 @@ const handleLogout = () => {
         
         <div class="flex">
             <nuxt-link to="/app/main">
-                <img src="/logonavbar.png" alt="logoeasycook" class="h-10 w-auto">
+                <img src="/Logonavbar.png" alt="logoeasycook" class="h-10 w-auto">
             </nuxt-link>
         </div>
 
