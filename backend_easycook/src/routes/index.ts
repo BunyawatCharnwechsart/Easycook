@@ -4,6 +4,7 @@ import menu from './menu'
 import category from './category'
 import { auth } from './auth'
 import usermenu from './usermenu'
+import savedmenu from './savedmenu'
 
 const routes = new Hono()
 
@@ -12,5 +13,6 @@ routes.route('/menu', menu)
 routes.route('/category', category)
 routes.route('/auth', auth)
 routes.route('/usermenu', usermenu)
+routes.route('/savedmenu', savedmenu)
 
 export default routes

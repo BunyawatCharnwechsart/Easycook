@@ -1,8 +1,6 @@
 <template>
     <div style="font-family: 'Bai Jamjuree'">
         <navBar />
-
-        <!-- ===== Search Bar Component ===== -->
         <SearchBar @search="onSearch" />
 
         <!-- ===== โหมดปกติ: หน้าแรก ===== -->
@@ -23,17 +21,14 @@
         <section v-else-if="selectedCategoryId && !hasSearched" class="px-10 my-20">
             <button
                 class="flex items-center gap-1 text-gray-500 hover:text-[#2C9A40] transition text-sm cursor-pointer mb-4"
-                @click="clearCategory"
-            >
+                @click="clearCategory">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
                 กลับหน้าหลัก
             </button>
-
             <h1 class="text-4xl font-bold mb-2">{{ selectedCategoryName }}</h1>
             <p class="text-gray-400 text-sm mb-8">พบ {{ totalResults }} รายการ</p>
-
             <div v-if="isLoading" class="flex justify-center items-center py-20">
                 <div class="w-10 h-10 border-4 border-[#2C9A40] border-t-transparent rounded-full animate-spin"></div>
             </div>
@@ -46,7 +41,6 @@
             <div v-else class="grid grid-cols-2 gap-6">
                 <MenuCard v-for="m in paginatedResults" :key="m.menuid" :menu="m" />
             </div>
-
             <PaginationBar :current-page="currentPage" :total-pages="totalPages" :displayed-pages="displayedPages" @go-to-page="goToPage" />
         </section>
 
@@ -54,8 +48,7 @@
         <section v-else class="px-10 mt-20 mb-30">
             <button
                 class="flex items-center gap-1 text-gray-500 hover:text-[#2C9A40] transition text-sm cursor-pointer mb-6"
-                @click="clearSearch"
-            >
+                @click="clearSearch">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
@@ -66,7 +59,6 @@
                 พบ {{ totalResults }} รายการ
                 <span v-if="searchQuery"> สำหรับ "{{ searchQuery }}"</span>
             </p>
-
             <div v-if="isLoading" class="flex justify-center items-center py-20">
                 <div class="w-10 h-10 border-4 border-[#2C9A40] border-t-transparent rounded-full animate-spin"></div>
             </div>
@@ -79,7 +71,6 @@
             <div v-else class="grid grid-cols-2 gap-6">
                 <MenuCard v-for="m in paginatedResults" :key="m.menuid" :menu="m" />
             </div>
-
             <PaginationBar :current-page="currentPage" :total-pages="totalPages" :displayed-pages="displayedPages" @go-to-page="goToPage" />
         </section>
 
@@ -88,7 +79,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue"
+import { ref, computed, onMounted, provide } from "vue"
 import navBar from "~/components/NavBar.vue"
 import SearchBar from "~/components/SearchBar.vue"
 import MenuCard from "~/components/MenuCard.vue"
@@ -97,10 +88,52 @@ import RecommendedSection from '~/components/RecommendedSection.vue'
 import Cardmenu from '~/components/CardMenu.vue'
 import aboutFooter from '~/components/AboutFooter.vue'
 import { useRoute } from 'vue-router'
-const route = useRoute()
 
+const route = useRoute()
 const config = useRuntimeConfig()
 
+// ── Saved state ───────────────────────────────────────────
+const savedIds = ref(new Set())
+
+onMounted(async () => {
+    const stored = localStorage.getItem('user')
+    if (!stored) return
+    const uid = JSON.parse(stored).id
+    const token = localStorage.getItem('token')
+    try {
+        const data = await $fetch(`${config.public.apiBase}/savedmenu/${uid}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        savedIds.value = new Set(data.map(m => m.menuid))
+    } catch(err) {
+        return console.log(err)
+    }
+})
+
+async function toggleSave(e, menuid) {
+    e?.preventDefault()
+    const stored = localStorage.getItem('user')
+    if (!stored) return navigateTo('/auth/login')
+    const uid = JSON.parse(stored).id
+    const token = localStorage.getItem('token')
+    const isSaved = savedIds.value.has(menuid)
+    try {
+        await $fetch(`${config.public.apiBase}/savedmenu`, {
+            method: isSaved ? 'DELETE' : 'POST',
+            headers: { Authorization: `Bearer ${token}` },
+            body: { uid, menuid }
+        })
+        if (isSaved) { savedIds.value.delete(menuid) } else { savedIds.value.add(menuid) }
+        savedIds.value = new Set(savedIds.value)
+    } catch(err) {
+        return console.log(err)
+    }
+}
+
+provide('savedIds', savedIds)
+provide('toggleSave', toggleSave)
+
+// ── Search / Category ─────────────────────────────────────
 const searchQuery = ref('')
 const hasSearched = ref(false)
 const isLoading = ref(false)
@@ -142,12 +175,10 @@ const onSearch = async ({ query, categoryIds }) => {
     currentPage.value = 1
     isLoading.value = true
     searchResults.value = []
-
     try {
         const params = new URLSearchParams()
         if (query) params.append('q', query)
-        categoryIds.forEach(id => params.append('categoryId', id))  // ← เปลี่ยนตรงนี้
-
+        categoryIds.forEach(id => params.append('categoryId', id))
         const data = await $fetch(`${config.public.apiBase}/menu/search?${params.toString()}`)
         searchResults.value = data
     } catch (err) {
@@ -172,7 +203,6 @@ const onCategorySelected = async ({ categoryid, categoryname }) => {
     currentPage.value = 1
     isLoading.value = true
     searchResults.value = []
-
     try {
         const data = await $fetch(`${config.public.apiBase}/category/${categoryid}/menu`)
         searchResults.value = data
@@ -201,7 +231,6 @@ onMounted(() => {
     const q = route.query.q
     const categoryId = route.query.categoryId
     const categoryName = route.query.categoryName
-
     if (q) {
         onSearch({ query: q, categoryIds: [] })
     } else if (categoryId) {

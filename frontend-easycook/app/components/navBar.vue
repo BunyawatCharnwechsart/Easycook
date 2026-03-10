@@ -1,11 +1,24 @@
 <script setup>
 const user = ref(null)
 const showDropdown = ref(false)
+const dropdownRef = ref(null)
 
 onMounted(() => {
     const stored = localStorage.getItem('user')
     if (stored) user.value = JSON.parse(stored)
+
+    document.addEventListener('click', handleClickOutside)
 })
+
+onBeforeUnmount(() => {
+    document.removeEventListener('click', handleClickOutside)
+})
+
+function handleClickOutside(event) {
+    if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
+        showDropdown.value = false
+    }
+}
 
 const handleLogout = () => {
     localStorage.removeItem('token')
@@ -56,7 +69,7 @@ const handleLogout = () => {
 
             <!-- login แล้ว -->
             <template v-else>
-                <li class="relative">
+                <li ref="dropdownRef" class="relative">
                     <!-- Profile button -->
                     <button class="flex items-center" @click="showDropdown = !showDropdown">
                         <img
