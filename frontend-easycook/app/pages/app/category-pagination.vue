@@ -12,7 +12,7 @@
                 </section>
                 <h1 class="ml-10 mt-10 text-4xl font-bold">เมนูอาหารที่แนะนำ</h1>
                 <section class="m-10">
-                    <CardMeNu />
+                    <RecommendedMenu />
                 </section>
             </div>
         </section>
