@@ -51,7 +51,16 @@
         </section>
 
         <!-- ===== โหมดค้นหา ===== -->
-        <section v-else class="px-10 mt-10">
+        <section v-else class="px-10 mt-20 mb-30">
+            <button
+                class="flex items-center gap-1 text-gray-500 hover:text-[#2C9A40] transition text-sm cursor-pointer mb-6"
+                @click="clearSearch"
+            >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                กลับหน้าหลัก
+            </button>
             <h1 class="text-4xl font-bold mb-2">รายการเมนูที่ค้นหาพบ</h1>
             <p class="text-gray-400 text-sm mb-8">
                 พบ {{ totalResults }} รายการ
@@ -79,7 +88,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue"
+import { ref, computed, onMounted } from "vue"
 import navBar from "~/components/NavBar.vue"
 import SearchBar from "~/components/SearchBar.vue"
 import MenuCard from "~/components/MenuCard.vue"
@@ -87,6 +96,8 @@ import PaginationBar from "~/components/PaginationBar.vue"
 import RecommendedSection from '~/components/RecommendedSection.vue'
 import Cardmenu from '~/components/CardMenu.vue'
 import aboutFooter from '~/components/AboutFooter.vue'
+import { useRoute } from 'vue-router'
+const route = useRoute()
 
 const config = useRuntimeConfig()
 
@@ -124,7 +135,7 @@ const displayedPages = computed(() => {
     return pages
 })
 
-const onSearch = async ({ query, main, cooking }) => {
+const onSearch = async ({ query, categoryIds }) => {
     searchQuery.value = query
     hasSearched.value = true
     selectedCategoryId.value = null
@@ -135,8 +146,7 @@ const onSearch = async ({ query, main, cooking }) => {
     try {
         const params = new URLSearchParams()
         if (query) params.append('q', query)
-        main.forEach(c => params.append('main', c))
-        cooking.forEach(c => params.append('cooking', c))
+        categoryIds.forEach(id => params.append('categoryId', id))  // ← เปลี่ยนตรงนี้
 
         const data = await $fetch(`${config.public.apiBase}/menu/search?${params.toString()}`)
         searchResults.value = data
@@ -146,6 +156,13 @@ const onSearch = async ({ query, main, cooking }) => {
     } finally {
         isLoading.value = false
     }
+}
+
+const clearSearch = () => {
+    hasSearched.value = false
+    searchQuery.value = ''
+    searchResults.value = []
+    currentPage.value = 1
 }
 
 const onCategorySelected = async ({ categoryid, categoryname }) => {
@@ -179,4 +196,16 @@ const goToPage = (page) => {
     currentPage.value = page
     window.scrollTo({ top: 0, behavior: 'smooth' })
 }
+
+onMounted(() => {
+    const q = route.query.q
+    const categoryId = route.query.categoryId
+    const categoryName = route.query.categoryName
+
+    if (q) {
+        onSearch({ query: q, categoryIds: [] })
+    } else if (categoryId) {
+        onCategorySelected({ categoryid: categoryId, categoryname: categoryName })
+    }
+})
 </script>

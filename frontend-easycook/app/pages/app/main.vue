@@ -17,16 +17,21 @@
             <div class="flex gap-3">
                 <div class="relative border border-gray-300 w-100 h-10 rounded-xl flex items-center">
                     <input 
+                        v-model="searchQuery"
                         type="text"
                         class="w-full h-full px-3 rounded-xl outline-none"
-                        placeholder=""
+                        placeholder="ค้นหาเมนูอาหาร..."
+                        @keyup.enter="handleSearch"
                     >
                     <img 
                         src="/searchIcon.png" alt="searchIcon"
                         class="w-5 h-5 object-contain absolute right-3"
                     >
                 </div>
-                <button class="bg-[#2C9A40] p-1 w-20 rounded-xl text-white cursor-pointer">
+                <button 
+                    class="bg-[#2C9A40] p-1 w-20 rounded-xl text-white cursor-pointer"
+                    @click="handleSearch"
+                >
                     ค้นหา
                 </button>
             </div>
@@ -39,7 +44,7 @@
                 <h1 class="ml-10 text-4xl">หมวดหมู่แนะนำ</h1>
                 <!--Card-->
                 <section class="m-10">
-                    <RecommendedSection/>
+                    <RecommendedSection  @category-selected="onCategorySelected"/>
                 </section>
                 <h1 class="ml-10 mt-10 text-4xl">เมนูอาหารที่แนะนำ</h1>
                 <section class="m-10">
@@ -53,10 +58,27 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import navBar from '~/components/NavBar.vue';
 import aboutFooter from '~/components/AboutFooter.vue';
 import ADS from '~/components/ADS.vue';
 import RecommendedSection from '~/components/RecommendedSection.vue';
 import RecommendedMenu from '~/components/RecommendedMenu.vue';
 
+const router = useRouter()
+const searchQuery = ref('')
+
+const handleSearch = () => {
+    const query = searchQuery.value.trim()
+    if (!query) return
+    router.push({ path: '/app/category-pagination', query: { q: query } })
+}
+
+const onCategorySelected = ({ categoryid, categoryname }) => {
+    router.push({ 
+        path: '/app/category-pagination', 
+        query: { categoryId: categoryid, categoryName: categoryname } 
+    })
+}
 </script>
