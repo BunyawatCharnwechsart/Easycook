@@ -56,7 +56,7 @@ const handleLogin = async () => {
 
         <!-- LEFT IMAGE -->
         <div class="hidden md:block flex-[1.9] relative">
-            <img src="/Easycook mian.png" class="absolute inset-0 w-full h-full object-cover object-left" >
+            <img src="/Easycookmain.png" class="absolute inset-0 w-full h-full object-cover object-left" >
         </div>
 
         <!-- RIGHT FORM -->
