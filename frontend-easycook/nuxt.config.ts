@@ -29,11 +29,11 @@ export default defineNuxtConfig({
         '@nuxt/scripts',
         '@nuxt/ui'
     ],
-    runtimeConfig: {
-        public: {
-            apiBase: process.env.NUXT_PUBLIC_API_BASE
-        }
-    },
+        runtimeConfig: {
+            public: {
+                apiBase: process.env.NUXT_PUBLIC_API_BASE ?? 'https://backend_easycook.bunyawat.workers.dev'
+            }
+        },
         hooks: {
         'pages:extend' (pages) {
         function setMiddleware (pages: NuxtPage[]) {
