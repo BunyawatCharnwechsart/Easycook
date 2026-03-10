@@ -1,6 +1,6 @@
 <template>
     <NuxtLink
-        :to="`/app/${menu.menuid}`"
+        :to="`/${menu.menuid}`"
         class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden cursor-pointer flex no-underline text-inherit"
     >
         <div class="relative w-48 shrink-0">

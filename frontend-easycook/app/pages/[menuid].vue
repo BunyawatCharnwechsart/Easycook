@@ -1,5 +1,5 @@
 <script setup>
-import NavBar from '~/components/NavBar.vue';
+import navBar from '~/components/navBar.vue';
 import AboutFooter from '~/components/AboutFooter.vue';
 
 const config = useRuntimeConfig()
@@ -48,7 +48,7 @@ async function toggleSave() {
 
 <template>
     <div class="min-h-screen bg-white font-sans text-gray-900">
-        <NavBar />
+        <navBar />
 
         <!-- Loading -->
         <div v-if="pending" class="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-gray-400">

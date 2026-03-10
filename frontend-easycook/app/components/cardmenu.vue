@@ -59,7 +59,7 @@ async function toggleSave(e, menuid) {
             <NuxtLink
                 v-for="m in menus"
                 :key="m.menuid"
-                :to="`/app/${m.menuid}`"
+                :to="`/${m.menuid}`"
                 class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden cursor-pointer flex no-underline text-inherit"
             >
                 <!-- รูปภาพซ้าย -->

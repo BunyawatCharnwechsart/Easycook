@@ -60,11 +60,6 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import navBar from '~/components/navBar.vue';
-import AboutFooter from '~/components/AboutFooter.vue';
-import ADS from '~/components/ADS.vue';
-import RecommendedSection from '~/components/RecommendedSection.vue';
-import RecommendedMenu from '~/components/RecommendedMenu.vue';
 
 const router = useRouter()
 const searchQuery = ref('')
