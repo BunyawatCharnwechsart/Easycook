@@ -69,7 +69,7 @@ const handleResetPassword = async () => {
     <div class="min-h-screen flex">
 
         <div class="hidden md:block flex-[1.9] relative">
-            <img src="/Easycook mian.png" class="absolute inset-0 w-full h-full object-cover object-left">
+            <img src="/Easycookmain.png" class="absolute inset-0 w-full h-full object-cover object-left">
         </div>
 
         <div class="flex-1 flex items-center justify-center bg-white">
