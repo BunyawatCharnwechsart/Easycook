@@ -34,19 +34,19 @@ const handleLogout = () => {
         <div class="max-w-7xl mx-auto flex items-center justify-between">
         
         <div class="flex">
-            <nuxt-link to="/main">
+            <nuxt-link to="/app/main">
                 <img src="/Logonavbar.png" alt="logoeasycook" class="h-10 w-auto">
             </nuxt-link>
         </div>
 
         <ul class="flex items-center gap-20 text-black font-medium">
-            <nuxt-link to="/recipe">
+            <nuxt-link to="/app/recipe">
                 <li class="cursor-pointer hover:underline transition-all duration-200">เพิ่มสูตร</li>
             </nuxt-link>
-            <nuxt-link to="/category-pagination">
+            <nuxt-link to="/app/category-pagination">
                 <li class="cursor-pointer hover:underline transition-all duration-200">หมวดหมู่</li>
             </nuxt-link>
-            <nuxt-link to="/about">
+            <nuxt-link to="/app/about">
                 <li class="cursor-pointer hover:underline transition-all duration-200">เกี่ยวกับ</li>
             </nuxt-link>
         </ul>
