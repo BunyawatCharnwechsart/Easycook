@@ -23,7 +23,6 @@ export default defineNuxtConfig({
             [tailwindcss()]
         },
     modules: [
-        '@nuxt/content',
         '@nuxt/eslint',
         '@nuxt/image',
         '@nuxt/scripts',
