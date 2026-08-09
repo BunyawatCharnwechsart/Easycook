@@ -1,6 +1,4 @@
 {
   "framework": "nuxtjs",
-  "rootDirectory": "frontend-easycook",
-  "buildCommand": "npm run build",
-  "outputDirectory": ".output/public"
+  "rootDirectory": "frontend-easycook"
 }
