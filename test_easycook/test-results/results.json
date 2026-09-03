@@ -1,0 +1,1584 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\playwright.config.js",
+    "rootDir": "C:/Users/User/OneDrive/Desktop/Easycook/test_easycook/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\global-setup.js",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/OneDrive/Desktop/Easycook/test_easycook/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/OneDrive/Desktop/Easycook/test_easycook/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "easycook.spec.js",
+      "file": "easycook.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "EasyCook test cases from Google Sheets",
+          "file": "easycook.spec.js",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "TC-F01-001 ลงทะเบียนบัญชีใหม่",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4342,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:18.985Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-f7c97--F01-001-ลงทะเบียนบัญชีใหม่\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-8971cbaef16648f51955",
+              "file": "easycook.spec.js",
+              "line": 67,
+              "column": 3
+            },
+            {
+              "title": "TC-F01-002 ไม่กรอกอีเมล",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 662,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:23.663Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-e8d92-ets-TC-F01-002-ไม่กรอกอีเมล\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-6bb4ac85055f004aeb4c",
+              "file": "easycook.spec.js",
+              "line": 73,
+              "column": 3
+            },
+            {
+              "title": "TC-F01-003 ลงทะเบียนด้วยอีเมลซ้ำ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1016,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:24.337Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-c5289-1-003-ลงทะเบียนด้วยอีเมลซ้ำ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-653063da36cf01f7297a",
+              "file": "easycook.spec.js",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "TC-F01-004 เข้าสู่ระบบสำเร็จ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 999,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:25.371Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-d0d37-C-F01-004-เข้าสู่ระบบสำเร็จ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-94d78d274e1d5673dfad",
+              "file": "easycook.spec.js",
+              "line": 84,
+              "column": 3
+            },
+            {
+              "title": "TC-F01-005 เข้าสู่ระบบด้วยรหัสผ่านผิด",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3624,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:26.389Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-dbf5b--เข้าสู่ระบบด้วยรหัสผ่านผิด\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-e1c06e2bf5919ed395a9",
+              "file": "easycook.spec.js",
+              "line": 90,
+              "column": 3
+            },
+            {
+              "title": "TC-F01-006 ออกจากระบบ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 961,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:30.035Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-0dc8c-heets-TC-F01-006-ออกจากระบบ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-e356bf6157e55626cba2",
+              "file": "easycook.spec.js",
+              "line": 97,
+              "column": 3
+            },
+            {
+              "title": "TC-F02-001 เพิ่มสูตรอาหารด้วยข้อมูลครบถ้วน",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1812,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:31.014Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-21620-มสูตรอาหารด้วยข้อมูลครบถ้วน\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-f06cc8ef5cbd7351df81",
+              "file": "easycook.spec.js",
+              "line": 106,
+              "column": 3
+            },
+            {
+              "title": "TC-F02-002 เพิ่มสูตรโดยไม่กรอกชื่อ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 505,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:32.841Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-3c4bf-002-เพิ่มสูตรโดยไม่กรอกชื่อ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-54dac8cc367885677e00",
+              "file": "easycook.spec.js",
+              "line": 121,
+              "column": 3
+            },
+            {
+              "title": "TC-F02-003 อัปโหลดรูปภาพที่รองรับ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 451,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:33.359Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-3bfa1--003-อัปโหลดรูปภาพที่รองรับ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-50c76037f0e140d52338",
+              "file": "easycook.spec.js",
+              "line": 128,
+              "column": 3
+            },
+            {
+              "title": "TC-F02-004 ปฏิเสธไฟล์ที่ไม่ใช่รูปภาพ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 475,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:33.827Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-5a1a0-4-ปฏิเสธไฟล์ที่ไม่ใช่รูปภาพ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-6434d11ad7eac28fff56",
+              "file": "easycook.spec.js",
+              "line": 139,
+              "column": 3
+            },
+            {
+              "title": "TC-F03-001 ดูสูตรอาหารของฉัน",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 566,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:34.314Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-b0383-C-F03-001-ดูสูตรอาหารของฉัน\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-199c2df30ee3b3cd1ae7",
+              "file": "easycook.spec.js",
+              "line": 145,
+              "column": 3
+            },
+            {
+              "title": "TC-F03-002 เปิดหน้าแก้ไขสูตรอาหาร",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 242,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:34.899Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-6abee--002-เปิดหน้าแก้ไขสูตรอาหาร\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-d0bd6acd38c4f035b30d",
+              "file": "easycook.spec.js",
+              "line": 153,
+              "column": 3
+            },
+            {
+              "title": "TC-F03-003 แสดงหน้าต่างยืนยันก่อนลบสูตร",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 616,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:35.156Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-2d9b4-สดงหน้าต่างยืนยันก่อนลบสูตร\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-d7b2f33033ca3ab83d62",
+              "file": "easycook.spec.js",
+              "line": 159,
+              "column": 3
+            },
+            {
+              "title": "TC-F03-004 ยกเลิกการลบสูตร",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 672,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:37.775Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-253b0--TC-F03-004-ยกเลิกการลบสูตร\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-8138fedf0913649aef5f",
+              "file": "easycook.spec.js",
+              "line": 167,
+              "column": 3
+            },
+            {
+              "title": "TC-F04-001 ค้นหาด้วยชื่อเต็ม",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1039,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:38.461Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-0eda3-C-F04-001-ค้นหาด้วยชื่อเต็ม\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-26f2e09a871bb7521c65",
+              "file": "easycook.spec.js",
+              "line": 176,
+              "column": 3
+            },
+            {
+              "title": "TC-F04-002 ค้นหาด้วยคำบางส่วน",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1092,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:39.516Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-912f0--F04-002-ค้นหาด้วยคำบางส่วน\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-77948860d82ad6ce2cb4",
+              "file": "easycook.spec.js",
+              "line": 183,
+              "column": 3
+            },
+            {
+              "title": "TC-F04-003 ค้นหาเมนูที่ไม่มี",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 935,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:40.624Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-9f396-C-F04-003-ค้นหาเมนูที่ไม่มี\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-152374f566ec0c9ff1ec",
+              "file": "easycook.spec.js",
+              "line": 190,
+              "column": 3
+            },
+            {
+              "title": "TC-F04-004 ค้นหาด้วยช่องว่าง",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 872,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:41.575Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-7259c-C-F04-004-ค้นหาด้วยช่องว่าง\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-2299f729d3d7ab789663",
+              "file": "easycook.spec.js",
+              "line": 197,
+              "column": 3
+            },
+            {
+              "title": "TC-F05-001 แสดงหมวดหมู่แนะนำ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 845,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:42.460Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-b92b1-C-F05-001-แสดงหมวดหมู่แนะนำ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-a8141ec22e82310817f9",
+              "file": "easycook.spec.js",
+              "line": 204,
+              "column": 3
+            },
+            {
+              "title": "TC-F05-002 เลือกหมวดหมู่",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 154,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:43.319Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-62de6-ts-TC-F05-002-เลือกหมวดหมู่\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-ed125665a4eebda918e7",
+              "file": "easycook.spec.js",
+              "line": 210,
+              "column": 3
+            },
+            {
+              "title": "TC-F05-003 หมวดหมู่ไม่มีสูตรแสดง empty state เมื่อ API คืนค่าว่าง",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1238,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:43.489Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-f0faa--state-เมื่อ-API-คืนค่าว่าง\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-7d268a1ef5da4f4d091b",
+              "file": "easycook.spec.js",
+              "line": 218,
+              "column": 3
+            },
+            {
+              "title": "TC-F06-001 แสดงเมนูแนะนำ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 897,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:44.741Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-b6a3d-ts-TC-F06-001-แสดงเมนูแนะนำ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-720ec634eaea15f8ccc3",
+              "file": "easycook.spec.js",
+              "line": 225,
+              "column": 3
+            },
+            {
+              "title": "TC-F06-002 เลือกเมนูแนะนำ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1674,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:45.653Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-2caa9-s-TC-F06-002-เลือกเมนูแนะนำ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-bcf819979eeb89550e75",
+              "file": "easycook.spec.js",
+              "line": 231,
+              "column": 3
+            },
+            {
+              "title": "TC-F06-003 เมนูแนะนำที่ถูกลบไม่ทำให้หน้า crash",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 746,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:47.344Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-d39db-ำที่ถูกลบไม่ทำให้หน้า-crash\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-7fc93f3d4dcfa57c979d",
+              "file": "easycook.spec.js",
+              "line": 238,
+              "column": 3
+            },
+            {
+              "title": "TC-F07-001 แสดงชื่อและรูปภาพสูตร",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1031,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:48.159Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-98f7d-7-001-แสดงชื่อและรูปภาพสูตร\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-c1f96b1d0b59b5f50068",
+              "file": "easycook.spec.js",
+              "line": 243,
+              "column": 3
+            },
+            {
+              "title": "TC-F07-002 แสดงรายการวัตถุดิบ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 62,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:49.206Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-a6ced--F07-002-แสดงรายการวัตถุดิบ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-09bbb4334250fc128471",
+              "file": "easycook.spec.js",
+              "line": 250,
+              "column": 3
+            },
+            {
+              "title": "TC-F07-003 แสดงขั้นตอนตามลำดับ",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 67,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:49.284Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-c41bb-F07-003-แสดงขั้นตอนตามลำดับ\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-8bed1786cc2114fb3e67",
+              "file": "easycook.spec.js",
+              "line": 255,
+              "column": 3
+            },
+            {
+              "title": "TC-F07-004 แสดงข้อมูลเจ้าของสูตร",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 51,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:49.367Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-39f0e-7-004-แสดงข้อมูลเจ้าของสูตร\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-08f85fdfb360b7d000a5",
+              "file": "easycook.spec.js",
+              "line": 262,
+              "column": 3
+            },
+            {
+              "title": "TC-F07-005 สูตรไม่มีรูปใช้ภาพสำรอง",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1978,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:49.431Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-613a3-005-สูตรไม่มีรูปใช้ภาพสำรอง\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-81384428741a77aec19e",
+              "file": "easycook.spec.js",
+              "line": 267,
+              "column": 3
+            },
+            {
+              "title": "TC-F07-006 Recipe ID ไม่ถูกต้อง",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 801,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:51.421Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-968df-07-006-Recipe-ID-ไม่ถูกต้อง\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-9cb21251e76ce39ccf18",
+              "file": "easycook.spec.js",
+              "line": 275,
+              "column": 3
+            },
+            {
+              "title": "TC-F07-007 ย้อนกลับจากหน้ารายละเอียด",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 12850,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/app\\/main/\u001b[39m\nReceived string:  \u001b[31m\"about:blank\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 10000ms\u001b[22m\n\u001b[2m    23 × locator resolved to <html>…</html>\u001b[22m\n\u001b[2m       - unexpected value \"about:blank\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/app\\/main/\u001b[39m\nReceived string:  \u001b[31m\"about:blank\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 10000ms\u001b[22m\n\u001b[2m    23 × locator resolved to <html>…</html>\u001b[22m\n\u001b[2m       - unexpected value \"about:blank\"\u001b[22m\n\n    at C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\tests\\easycook.spec.js:288:28",
+                        "location": {
+                          "file": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\tests\\easycook.spec.js",
+                          "column": 28,
+                          "line": 288
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 286 |\u001b[39m     \u001b[36mawait\u001b[39m link\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 287 |\u001b[39m     \u001b[36mawait\u001b[39m isolated\u001b[33m.\u001b[39mgoBack()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 288 |\u001b[39m     \u001b[36mawait\u001b[39m expect(isolated)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/app\\/main/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 289 |\u001b[39m     \u001b[36mawait\u001b[39m context\u001b[33m.\u001b[39mclose()\u001b[33m;\u001b[39m\n \u001b[90m 290 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 291 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\tests\\easycook.spec.js",
+                            "column": 28,
+                            "line": 288
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected pattern: \u001b[32m/\\/app\\/main/\u001b[39m\nReceived string:  \u001b[31m\"about:blank\"\u001b[39m\nTimeout: 10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 10000ms\u001b[22m\n\u001b[2m    23 × locator resolved to <html>…</html>\u001b[22m\n\u001b[2m       - unexpected value \"about:blank\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 286 |\u001b[39m     \u001b[36mawait\u001b[39m link\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 287 |\u001b[39m     \u001b[36mawait\u001b[39m isolated\u001b[33m.\u001b[39mgoBack()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 288 |\u001b[39m     \u001b[36mawait\u001b[39m expect(isolated)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/app\\/main/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 289 |\u001b[39m     \u001b[36mawait\u001b[39m context\u001b[33m.\u001b[39mclose()\u001b[33m;\u001b[39m\n \u001b[90m 290 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 291 |\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\tests\\easycook.spec.js:288:28\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:02:53.576Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-af58c-7-ย้อนกลับจากหน้ารายละเอียด\\test-failed-2.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-af58c-7-ย้อนกลับจากหน้ารายละเอียด\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-af58c-7-ย้อนกลับจากหน้ารายละเอียด\\error-context.md"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-af58c-7-ย้อนกลับจากหน้ารายละเอียด\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-af58c-7-ย้อนกลับจากหน้ารายละเอียด\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\tests\\easycook.spec.js",
+                        "column": 28,
+                        "line": 288
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-51c877e5b982ac88ab48",
+              "file": "easycook.spec.js",
+              "line": 280,
+              "column": 3
+            },
+            {
+              "title": "TC-F08-001 บันทึกสูตรอาหาร",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8794,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:03:09.140Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-0ec88--TC-F08-001-บันทึกสูตรอาหาร\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-9dbea98f7ecbfe890a96",
+              "file": "easycook.spec.js",
+              "line": 292,
+              "column": 3
+            },
+            {
+              "title": "TC-F08-002 ดูสูตรที่บันทึก",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16821,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('ไก่ทอดแสนอร่อยยย')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('ไก่ทอดแสนอร่อยยย')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('ไก่ทอดแสนอร่อยยย')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('ไก่ทอดแสนอร่อยยย')\u001b[22m\n\n    at C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\tests\\easycook.spec.js:315:45",
+                        "location": {
+                          "file": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\tests\\easycook.spec.js",
+                          "column": 45,
+                          "line": 315
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 313 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/app/profile'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 314 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'บันทึกแล้ว'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 315 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(savedName))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m15\u001b[39m_000 })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 316 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 317 |\u001b[39m\n \u001b[90m 318 |\u001b[39m   test(\u001b[32m'TC-F08-003 ยกเลิกบันทึกสูตร'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\tests\\easycook.spec.js",
+                            "column": 45,
+                            "line": 315
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('ไก่ทอดแสนอร่อยยย')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText('ไก่ทอดแสนอร่อยยย')\u001b[22m\n\n\n\u001b[0m \u001b[90m 313 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/app/profile'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 314 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'บันทึกแล้ว'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 315 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByText(savedName))\u001b[33m.\u001b[39mtoBeVisible({ timeout\u001b[33m:\u001b[39m \u001b[35m15\u001b[39m_000 })\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 316 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 317 |\u001b[39m\n \u001b[90m 318 |\u001b[39m   test(\u001b[32m'TC-F08-003 ยกเลิกบันทึกสูตร'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\tests\\easycook.spec.js:315:45\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:03:18.356Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-99068--TC-F08-002-ดูสูตรที่บันทึก\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-99068--TC-F08-002-ดูสูตรที่บันทึก\\error-context.md"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-99068--TC-F08-002-ดูสูตรที่บันทึก\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-99068--TC-F08-002-ดูสูตรที่บันทึก\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\tests\\easycook.spec.js",
+                        "column": 45,
+                        "line": 315
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-6b8b3b267dd7dc0666c5",
+              "file": "easycook.spec.js",
+              "line": 303,
+              "column": 3
+            },
+            {
+              "title": "TC-F08-003 ยกเลิกบันทึกสูตร",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7314,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:03:37.428Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-de375-TC-F08-003-ยกเลิกบันทึกสูตร\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-57661446222d89c1fc64",
+              "file": "easycook.spec.js",
+              "line": 318,
+              "column": 3
+            },
+            {
+              "title": "TC-F08-004 Guest ต้องเข้าสู่ระบบก่อนบันทึก",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2098,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-03T12:03:45.135Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\User\\OneDrive\\Desktop\\Easycook\\test_easycook\\test-results\\easycook-EasyCook-test-cas-55883-t-ต้องเข้าสู่ระบบก่อนบันทึก\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a7cc8fa2f548211db9c7-c99daede12261100b9b4",
+              "file": "easycook.spec.js",
+              "line": 332,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-03T12:02:18.481Z",
+    "duration": 88905.24500000001,
+    "expected": 33,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}
