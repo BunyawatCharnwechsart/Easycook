@@ -81,4 +81,45 @@ users.post('/', zValidator('json', createUserSchema), async (c) => {
     }
 })
 
+// PUT /users/:uid — แก้ไขชื่อ
+users.put('/:uid', async (c) => {
+    try {
+        const uid = Number(c.req.param('uid'))
+        if (Number.isNaN(uid)) {
+            return c.json({ error: 'Invalid user id' }, 400)
+        }
+
+        const body = await c.req.json()
+        const name = body?.name?.trim()
+
+        if (!name) {
+            return c.json({ error: 'กรุณากรอกชื่อ' }, 400)
+        }
+        if (name.length > 20) {
+            return c.json({ error: 'ห้ามมากกว่า 20 ตัวอักษร' }, 400)
+        }
+
+        const db = getDb(c)
+
+        const existing = await db
+            .prepare('SELECT uid FROM users WHERE uid = ?')
+            .bind(uid)
+            .first()
+
+        if (!existing) {
+            return c.json({ error: 'Not found' }, 404)
+        }
+
+        const updated = await db
+            .prepare('UPDATE users SET name = ? WHERE uid = ? RETURNING *')
+            .bind(name, uid)
+            .first()
+
+        return c.json({ message: 'Updated', user: updated })
+
+    } catch (err: any) {
+        return c.json({ error: err?.message || String(err) }, 500)
+    }
+})
+
 export default users

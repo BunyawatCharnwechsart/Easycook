@@ -5,7 +5,7 @@ import routes from './routes'
 const app = new Hono()
 
 app.use('*', cors({
-    origin: '*',
+    origin: ["http://localhost:3000", "https://easycook-three.vercel.app"],
     allowHeaders: ['Content-Type', 'Authorization'],
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 }))

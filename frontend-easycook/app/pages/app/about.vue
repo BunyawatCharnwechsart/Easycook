@@ -1,109 +1,106 @@
 <template>
-  <div style="font-family: 'Bai Jamjuree'" class="font-sans text-gray-800">
-    <navBar/>
-    <!-- Hero Slider -->
-    <section class="relative h-screen overflow-hidden">
-      <transition name="fade">
-        <img
-          :key="current"
-          :src="images[current]"
-          class="absolute inset-0 w-full h-full object-cover"
-        >
-      </transition>
-    </section>
+    <div style="font-family: 'Bai Jamjuree'" class="font-sans text-gray-800">
+        <navBar />
+        <!-- Hero Slider -->
+        <section class="relative h-screen overflow-hidden">
+            <transition name="fade">
+                <img :key="current" :src="images[current]" class="absolute inset-0 w-full h-full object-cover">
+            </transition>
+        </section>
 
-    <!-- About Section -->
-    <section class="bg-white py-20 px-6 text-center">
+        <!-- About Section -->
+        <section class="bg-white py-20 px-6 text-center">
 
-      <!-- Logo -->
-      <img
-        src="/logo.png"
-        alt="Easy Cook Logo"
-        class="mx-auto mb-8 w-40"
-      >
+            <!-- Logo -->
+            <img src="/logo.png" alt="Easy Cook Logo" class="mx-auto mb-8 w-40">
 
-      <!-- Description -->
-      <div class="max-w-4xl mx-auto text-gray-600 leading-relaxed space-y-4">
-        <p>
-          “Easycook คือเว็บไซต์รวมสูตรอาหารที่ถูกสร้างขึ้นเพื่อให้การทำอาหารเป็นเรื่องง่ายสำหรับทุกคน
-        </p>
-        <p>
-           ไม่ว่าคุณจะเป็นมือใหม่ที่เพิ่งเริ่มต้นเข้าครัว หรือคนที่อยากลองเมนูใหม่ ๆ Easycook
-        </p>
-        <p>
-           พร้อมเป็นผู้ช่วยของคุณในการสร้างสรรค์มื้ออร่อยได้ทุกวัน
-        </p>
-        <p>
-          ภายในเว็บไซต์ Easycook รวบรวมสูตรอาหารหลากหลายประเภท ทั้งอาหารไทย อาหารนานาชาติ เมนูคาว เมนูหวาน ของว่าง และเครื่องดื่ม โดยทุกสูตรมาพร้อมขั้นตอนการทำที่อธิบายอย่างละเอียด
-        </p>
-        <p>
-           มีภาพประกอบชัดเจน เข้าใจง่าย และสามารถทำตามได้จริง
-          เรามุ่งเน้นการออกแบบเว็บไซต์ให้ใช้งานสะดวก ค้นหาสูตรอาหารได้อย่างรวดเร็ว มีระบบแบ่งหมวดหมู่ชัดเจน เช่น เมนูทำง่าย เมนูสุขภาพ เมนูยอดนิยม และเมนูสำหรับมือใหม่ เพื่อให้ผู้ใช้งานสามารถเลือกสูตรที่เหมาะกับไลฟ์สไตล์ของตนเองได้อย่างง่ายดาย
-        </p>
-        <p>
-          Easyvook ไม่ได้เป็นเพียงเว็บไซต์สูตรอาหาร แต่เป็นพื้นที่สำหรับการแบ่งปันไอเดีย แรงบันดาลใจ และความสุขในการทำอาหาร เพราะเราเชื่อว่าอาหารที่ดีสามารถสร้างรอยยิ้มและความอบอุ่นให้ทุกครอบครัวได้เสมอ”
-        </p>
-      </div>
+            <!-- Description -->
+            <div class="max-w-4xl mx-auto text-gray-600 leading-relaxed space-y-4">
+                <p>
+                    “Easycook คือเว็บไซต์รวมสูตรอาหารที่ถูกสร้างขึ้นเพื่อให้การทำอาหารเป็นเรื่องง่ายสำหรับทุกคน
+                </p>
+                <p>
+                    ไม่ว่าคุณจะเป็นมือใหม่ที่เพิ่งเริ่มต้นเข้าครัว หรือคนที่อยากลองเมนูใหม่ ๆ Easycook
+                </p>
+                <p>
+                    พร้อมเป็นผู้ช่วยของคุณในการสร้างสรรค์มื้ออร่อยได้ทุกวัน
+                </p>
+                <p>
+                    ภายในเว็บไซต์ Easycook รวบรวมสูตรอาหารหลากหลายประเภท ทั้งอาหารไทย อาหารนานาชาติ เมนูคาว เมนูหวาน
+                    ของว่าง
+                    และเครื่องดื่ม โดยทุกสูตรมาพร้อมขั้นตอนการทำที่อธิบายอย่างละเอียด
+                </p>
+                <p>
+                    มีภาพประกอบชัดเจนเข้าใจง่าย และสามารถทำตามได้จริง
+                    เรามุ่งเน้นการออกแบบเว็บไซต์ให้ใช้งานสะดวก ค้นหาสูตรอาหารได้อย่างรวดเร็ว มีระบบแบ่งหมวดหมู่ชัดเจน
+                    เช่น
+                    เมนูทำง่าย เมนูสุขภาพ เมนูยอดนิยม และเมนูสำหรับมือใหม่
+                    เพื่อให้ผู้ใช้งานสามารถเลือกสูตรที่เหมาะกับไลฟ์สไตล์ของตนเองได้อย่างง่ายดาย
+                </p>
+                <p>
+                    Easyvook ไม่ได้เป็นเพียงเว็บไซต์สูตรอาหาร แต่เป็นพื้นที่สำหรับการแบ่งปันไอเดีย แรงบันดาลใจ
+                    และความสุขในการทำอาหาร
+                    เพราะเราเชื่อว่าอาหารที่ดีสามารถสร้างรอยยิ้มและความอบอุ่นให้ทุกครอบครัวได้เสมอ”
+                </p>
+            </div>
 
-      <!-- Team -->
-      <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-12 max-w-5xl mx-auto">
+            <!-- Team -->
+            <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-12 max-w-5xl mx-auto">
 
-        <div class="text-center">
-          <img src="/ceomon.jpg" class="w-40 h-40 mx-auto rounded-full object-cover mb-4">
-          <p class="font-medium">MR. Bunyawat Charnwechsart</p>
-          <p class="text-sm text-gray-500">C.E.O</p>
-        </div>
+                <div class="text-center">
+                    <img src="/ceomon.jpg" class="w-40 h-40 mx-auto rounded-full object-cover mb-4">
+                    <p class="font-medium">MR. Bunyawat Charnwechsart</p>
+                    <p class="text-sm text-gray-500">C.E.O</p>
+                </div>
 
-        <div class="text-center">
-          <img src="/ceofah.jpg" class="w-40 h-40 mx-auto rounded-full object-cover mb-4">
-          <p class="font-medium">MS. Phattharaphon Tangtaeng</p>
-          <p class="text-sm text-gray-500">C.E.O</p>
-        </div>
+                <div class="text-center">
+                    <img src="/ceofah.jpg" class="w-40 h-40 mx-auto rounded-full object-cover mb-4">
+                    <p class="font-medium">MS. Phattharaphon Tangtaeng</p>
+                    <p class="text-sm text-gray-500">C.E.O</p>
+                </div>
 
-        <div class="text-center">
-          <img src="/ceoball.jpg" class="w-40 h-40 mx-auto rounded-full object-cover mb-4">
-          <p class="font-medium">MR. Kunlaphat sroisep</p>
-          <p class="text-sm text-gray-500">C.E.O</p>
-        </div>
+                <div class="text-center">
+                    <img src="/ceoball.jpg" class="w-40 h-40 mx-auto rounded-full object-cover mb-4">
+                    <p class="font-medium">MR. Kunlaphat sroisep</p>
+                    <p class="text-sm text-gray-500">C.E.O</p>
+                </div>
 
-      </div>
-    </section>
-    <aboutFooter/>
-  </div>
+            </div>
+        </section>
+        <aboutFooter />
+    </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import navBar from "~/components/navBar.vue";
-import aboutFooter from "~/components/aboutFooter.vue";
 
 const images = [
-  "/about.1.png",
-  "/about.2.png",
+    "/about.1.png",
+    "/about.2.png",
 ];
 
 const current = ref(0);
 let interval;
 
 onMounted(() => {
-  interval = setInterval(() => {
-    current.value = (current.value + 1) % images.length;
-  }, 4000);
+    interval = setInterval(() => {
+        current.value = (current.value + 1) % images.length;
+    }, 4000);
 });
 
 onUnmounted(() => {
-  clearInterval(interval);
+    clearInterval(interval);
 });
 </script>
 
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 1.5s ease;
+    transition: opacity 1.5s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
-  opacity: 0;
+    opacity: 0;
 }
 </style>
