@@ -1,0 +1,10 @@
+node_modules/
+.wrangler/
+dist/
+.env
+.env.production
+.dev.vars
+.idea/
+.vscode/
+workerd/
+*.log

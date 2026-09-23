@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: ./backend_easycook
+    ports:
+      - "${BACKEND_PORT:-8787}:8787"
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-change-me}
+    volumes:
+      - ./backend_easycook:/app
+      - /app/node_modules
+      - wrangler_state:/app/.wrangler
+
+  frontend:
+    build: ./frontend-easycook
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    environment:
+      NUXT_PUBLIC_API_BASE: http://backend:8787
+    volumes:
+      - ./frontend-easycook:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  wrangler_state:
